@@ -91,20 +91,20 @@ Decuria 把这些痛点收拢成四个页面：**一次配置、清晰可见、�
 ### 作为 pip 包
 
 ```bash
-pip install decuria
-hermes plugins enable decuria
+pip install decuria && hermes plugins enable decuria
 ```
+
+> 两步合一：`pip install` 下载插件代码，`hermes plugins enable` 把 `decuria` 加入 `config.yaml` 的 `plugins.enabled` 启用清单。Hermes 默认不自动加载第三方插件，启用后重启 Gateway 即生效。
 
 ### 或作为目录插件
 
 ```bash
 # macOS / Linux
-git clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria
-hermes plugins enable decuria
+git clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria && hermes plugins enable decuria
 ```
 
 ```powershell
-# Windows PowerShell
+# Windows PowerShell（PowerShell 5.1 不支持 &&，分两步）
 git clone https://github.com/seanyang1983/decuria.git "$HOME\.hermes\plugins\decuria"
 hermes plugins enable decuria
 ```

@@ -232,12 +232,10 @@
   <h2 data-i18n="inst.title">两步接入 Hermes</h2>
   <p class="sub" data-i18n="inst.sub">作为 pip 包安装,或作为目录插件放入 Hermes 主目录。</p>
   <pre><span class="c"># <span data-i18n="inst.viapip">作为 pip 包</span></span>
-<span class="k">pip</span> install decuria
-<span class="k">hermes</span> plugins enable decuria
+<span class="k">pip</span> install decuria && <span class="k">hermes</span> plugins enable decuria
 
 <span class="c"># <span data-i18n="inst.viadir">或作为目录插件</span></span>
-<span class="k">git</span> clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria
-<span class="k">hermes</span> plugins enable decuria</pre>
+<span class="k">git</span> clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria && <span class="k">hermes</span> plugins enable decuria</pre>
   <p class="sub" style="margin-top:18px" data-i18n="inst.after">重启 Gateway 后打开 Dashboard,从侧栏进入「三个臭皮匠」。</p>
 </div></section>
 

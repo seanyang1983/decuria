@@ -91,20 +91,20 @@ Add, edit, enable or disable any OpenAI-compatible provider, with custom base UR
 ### As a pip package
 
 ```bash
-pip install decuria
-hermes plugins enable decuria
+pip install decuria && hermes plugins enable decuria
 ```
+
+> Two steps in one: `pip install` downloads the plugin code; `hermes plugins enable` adds `decuria` to the `plugins.enabled` allow-list in `config.yaml`. Hermes does not auto-load third-party plugins by default, so enabling and restarting the Gateway activates it.
 
 ### Or as a directory plugin
 
 ```bash
 # macOS / Linux
-git clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria
-hermes plugins enable decuria
+git clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria && hermes plugins enable decuria
 ```
 
 ```powershell
-# Windows PowerShell
+# Windows PowerShell (PowerShell 5.1 doesn't support &&, so two steps)
 git clone https://github.com/seanyang1983/decuria.git "$HOME\.hermes\plugins\decuria"
 hermes plugins enable decuria
 ```
