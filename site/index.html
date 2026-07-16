@@ -87,12 +87,19 @@
   .rt-particle{fill:#fef08a;filter:drop-shadow(0 0 4px rgba(254,240,138,.9))}
   @media(prefers-reduced-motion:reduce){.rt-flow{animation:none}.rt-particle{display:none}}
 
-  .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-  .shot{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s}
+  .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:640px){.shots{grid-template-columns:1fr}}
+  .shot{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:.18s;display:flex;flex-direction:column}
   .shot:hover{border-color:color-mix(in srgb,var(--gold) 45%,var(--line));transform:translateY(-3px)}
-  .shot img{display:block;width:100%;height:auto;border-bottom:1px solid var(--line)}
+  .shot img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top center;
+    border-bottom:1px solid var(--line);cursor:zoom-in}
   .shot figcaption{padding:12px 16px;color:var(--muted);font-size:14px}
   .shot figcaption b{color:var(--fg);font-weight:700;display:block;margin-bottom:2px}
+  .lb{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:24px;
+    background:rgba(6,5,16,.92);backdrop-filter:blur(4px);cursor:zoom-out}
+  .lb.open{display:grid}
+  .lb img{max-width:min(1200px,96vw);max-height:92vh;width:100%;height:auto;
+    border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,.6)}
   .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:24px}
   .step{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
   .step .n{font-family:var(--mono);color:var(--gold);font-size:13px}
@@ -176,10 +183,10 @@
   <h2 data-i18n="shot.title">四个页面,一眼看懂</h2>
   <p class="sub" data-i18n="shot.sub">来自真实 Dashboard 的截图。</p>
   <div class="shots">
-    <figure class="shot"><img loading="lazy" src="screenshots/moa-roundtable.png" alt="智囊团圆桌 / MoA round table"><figcaption><b data-i18n="shot.1t">智囊团圆桌</b><span data-i18n="shot.1d">拖拽编排专家与指挥,单轮或多轮辩证。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/channel-config.png" alt="通道配置 / Channel routing"><figcaption><b data-i18n="shot.2t">通道配置</b><span data-i18n="shot.2d">全局、各渠道与多模态候补模型一次配置。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/model-management.png" alt="模型管理 / Model management"><figcaption><b data-i18n="shot.3t">模型管理</b><span data-i18n="shot.3d">按 Provider 分组,新模型默认关闭。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/provider-management.png" alt="Provider 管理 / Provider management"><figcaption><b data-i18n="shot.4t">Provider 管理</b><span data-i18n="shot.4d">兼容任意 OpenAI 接口,多 Key、按 Provider 代理。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/moa-roundtable.png" alt="智囊团圆桌 / MoA round table" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.1t">智囊团圆桌</b><span data-i18n="shot.1d">拖拽编排专家与指挥,单轮或多轮辩证。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/channel-config.png" alt="通道配置 / Channel routing" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.2t">通道配置</b><span data-i18n="shot.2d">全局、各渠道与多模态候补模型一次配置。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/model-management.png" alt="模型管理 / Model management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.3t">模型管理</b><span data-i18n="shot.3d">按 Provider 分组,新模型默认关闭。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/provider-management.png" alt="Provider 管理 / Provider management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.4t">Provider 管理</b><span data-i18n="shot.4d">兼容任意 OpenAI 接口,多 Key、按 Provider 代理。</span></figcaption></figure>
   </div>
 </div></section>
 
@@ -245,6 +252,8 @@
   </ul>
 </div></section>
 
+<div id="lb" class="lb" onclick="closeLb()" aria-hidden="true"><img id="lbimg" alt=""></div>
+
 <footer><div class="wrap foot">
   <div><span data-i18n="foot.license">采用 AGPL-3.0 许可发布</span> · © 2026 Decuria Team</div>
   <div><a href="https://github.com/seanyang1983/decuria" target="_blank" rel="noopener">GitHub</a> · <a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener">Hermes Agent</a></div>
@@ -309,6 +318,9 @@
   function cp(b){try{navigator.clipboard&&navigator.clipboard.writeText("pip install decuria");}catch(e){}
     var t=b.textContent;b.textContent=document.documentElement.lang==="en"?"Copied":"\u5DF2\u590D\u5236";
     setTimeout(function(){b.textContent=t;},1400);}
+  function openLb(src){var lb=document.getElementById("lb");document.getElementById("lbimg").src=src;lb.classList.add("open");lb.setAttribute("aria-hidden","false");}
+  function closeLb(){var lb=document.getElementById("lb");lb.classList.remove("open");lb.setAttribute("aria-hidden","true");var im=document.getElementById("lbimg");if(im)im.src="";}
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb();});
   (function(){var s=null;try{s=localStorage.getItem("decuria-lang");}catch(e){} if(s==="en") apply("en");})();
 </script>
 </body>
