@@ -341,6 +341,111 @@
       moaTaglinePrefix: "竞技场排行榜 第",
       moaTaglineMid: " 位 | 实时超频核心",
       moaClose: "关闭",
+      proxyBadFormat: "代理地址格式无效",
+      refreshedOk: "✓ 已刷新",
+      refreshFailedShort: "✕ 失败",
+      refreshNoChange: "⚠ 无变化",
+      proxyFillHostPort: "请填写地址和端口",
+      modelRefreshFailed: "模型刷新失败",
+      modelRefreshTimeout: "模型刷新后台任务超时",
+      plmWeixin: "微信",
+      plmFeishu: "飞书",
+      plmDingtalk: "钉钉",
+      plmWecom: "企业微信",
+      plmWecomCb: "企业微信回调",
+      plmQqbot: "QQ 机器人",
+      plmYuanbao: "元宝",
+      plmEmail: "邮件",
+      plmCron: "定时任务",
+      statHintChannels: " 个活跃渠道",
+      statHintProviders: " 个提供商",
+      statHintModels: " 可选模型",
+      statHintEnabled: " 已开启模型",
+      selectPlaceholder: "选择…",
+      keyItemPrefix: "密钥 ",
+      keyCurrentPrefix: "当前 ",
+      keyKeepBlank: "（留空则保留）",
+      errKeyOrEnv: "key_env 或 api_key 至少填一项",
+      provRemoveConfirmPre: "确定要移除提供商 「",
+      provRemoveConfirmPost: "」吗？\n\n此操作不可撤销。",
+      envVar: "环境变量",
+      errPresetExists: "预设名已存在: ",
+      errKeepOnePreset: "至少保留一个预设",
+      expertPrefix: "专家 ",
+      conductorSynthParen: "指挥综合 (",
+      fromChannel: "来自渠道: ",
+      discussionWord: "讨论",
+      youWord: "你",
+      moaReply: "智囊团回复",
+      fromPrefix: "来自 ",
+      expertsSuffixSynth: " 位专家 · 指挥综合",
+      copyReplyTip: "复制此回复（含专家与指挥）",
+      conductorSynth: "指挥综合",
+      loadingSessionDetail: "加载会话详情中…",
+      consensusReport: "共识报告",
+      dynamicConverge: "动态收敛·提前终止",
+      copyConsensus: "复制共识报告",
+      moaDeliberating: "智囊团正在讨论，请稍候…",
+      moaNoDiscussion: "该组合方案暂无讨论记录，在下方输入问题发起智囊团讨论。",
+      moaAskPh: "向智囊团提问…",
+      discussing: "讨论中…",
+      sendBtn: "发送",
+      errPlaceCore: "请先放置核心编排器 (CORE)",
+      errPlaceExpert: "请至少放置 1 个专家模型",
+      moaUsageTitle: "智囊团用量总览",
+      presetColon: "组合方案：",
+      moaEmptyRoundtable: "当前圆桌未放置任何模型",
+      moaSessions: "MoA 会话",
+      sessionsSuffix: " 会话",
+      totalMoaToken: "总计：MoA TOKEN ",
+      midMoaSessions: " · MoA 会话 ",
+      moaChatTitle: "智囊团对话",
+      switchPresetBtn: "切换组合方案",
+      closeWindow: "关闭窗口",
+      closeX: "✕ 关闭",
+      presetLabel: "组合方案",
+      newPresetPh: "新预设名称",
+      createBtn: "创建",
+      addPresetBtn: "+ 预设",
+      deleteBtn: "删除",
+      isDefaultBtn: "默认 ✓",
+      setDefaultBtn: "设默认",
+      deliberationMode: "会商模式",
+      singleRound: "单轮会商",
+      singleRoundTip: "各专家并行独立作答，由指挥统一汇总",
+      multiRound: "多轮辩证",
+      multiRoundTip: "专家每轮并行分析；下一轮基于上一轮观点交叉质疑与修正，形成高共识后可提前结束（最多 5 轮）",
+      removeConductor: "移除指挥模型",
+      removeExpert: "移除该专家",
+      addExpertTip: "添加一个专家席位",
+      contextUnknown: "上下文未知",
+      modelIdColon: "模型 ID：",
+      debateRoleLabel: "辩论角色（差异化视角）",
+      debateRolePh: "如：逻辑主审 / 事实核查 / 创意发散",
+      sessionCountLbl: "会话数",
+      totalTokenLbl: "总 Token",
+      avgPerSession: "平均/会话",
+      avgTokenTip: "该模型每次会话平均消耗的 Token 数",
+      lastActive: "最近活跃",
+      noUsageRecord: "暂无使用记录",
+      justNow: "刚刚",
+      minAgo: " 分钟前",
+      hourAgo: " 小时前",
+      dayAgo: " 天前",
+      haveSessionsPre: "有 ",
+      haveSessionsSuf: " 次会话",
+      moaTokenStatsFooter: "MIXTURE OF AGENTS · Token 用量统计",
+      switchPresetTip: "切换组合方案（与上方「组合方案」同一设置）",
+      openNewWindowTip: "在新窗口打开对话页面",
+      newWindowBtn: "⛶ 新窗口",
+      applyHermesTip: "将圆桌配置持久化到 Hermes（自动同步复制 YAML 到剪贴板）",
+      appliedCopied: "已应用 + 已复制 ✓",
+      applyingState: "应用中…",
+      applyToHermesBtn: "应用到 Hermes",
+      loadingProviders: "提供商清单加载中…",
+      noProbedModels: "该提供商未探测到模型列表，请点击右上角 🔄 刷新",
+      freeModels: "免费模型",
+      freeModelsTip: "点击搜索包含 free 的模型",
     };
 
     // ===== 语言包（内嵌于插件，跟随 Dashboard 语言切换 · window.__HERMES_PLUGIN_SDK__.useI18n）=====
@@ -417,6 +522,111 @@
       moaTaglinePrefix: "Arena rank #",
       moaTaglineMid: " · live overclocked core",
       moaClose: "Close",
+      proxyBadFormat: "Invalid proxy address format",
+      refreshedOk: "✓ Refreshed",
+      refreshFailedShort: "✕ Failed",
+      refreshNoChange: "⚠ No change",
+      proxyFillHostPort: "Please enter the host and port",
+      modelRefreshFailed: "Model refresh failed",
+      modelRefreshTimeout: "Model refresh background task timed out",
+      plmWeixin: "WeChat",
+      plmFeishu: "Feishu",
+      plmDingtalk: "DingTalk",
+      plmWecom: "WeCom",
+      plmWecomCb: "WeCom callback",
+      plmQqbot: "QQ Bot",
+      plmYuanbao: "Yuanbao",
+      plmEmail: "Email",
+      plmCron: "Scheduled task",
+      statHintChannels: " active channels",
+      statHintProviders: " providers",
+      statHintModels: " selectable models",
+      statHintEnabled: " enabled models",
+      selectPlaceholder: "Select…",
+      keyItemPrefix: "Key ",
+      keyCurrentPrefix: "Current ",
+      keyKeepBlank: " (leave blank to keep)",
+      errKeyOrEnv: "Enter at least one of key_env or api_key",
+      provRemoveConfirmPre: "Remove provider «",
+      provRemoveConfirmPost: "»?\n\nThis cannot be undone.",
+      envVar: "Env var",
+      errPresetExists: "Preset name already exists: ",
+      errKeepOnePreset: "Keep at least one preset",
+      expertPrefix: "Expert ",
+      conductorSynthParen: "Conductor synthesis (",
+      fromChannel: "From channel: ",
+      discussionWord: "Discussion",
+      youWord: "You",
+      moaReply: "Think Tank reply",
+      fromPrefix: "From ",
+      expertsSuffixSynth: " experts · conductor synthesis",
+      copyReplyTip: "Copy this reply (experts + conductor)",
+      conductorSynth: "Conductor synthesis",
+      loadingSessionDetail: "Loading conversation details…",
+      consensusReport: "Consensus report",
+      dynamicConverge: "Dynamic convergence · early stop",
+      copyConsensus: "Copy consensus report",
+      moaDeliberating: "The Think Tank is deliberating, please wait…",
+      moaNoDiscussion: "No discussion for this preset yet. Enter a question below to start one.",
+      moaAskPh: "Ask the Think Tank…",
+      discussing: "Discussing…",
+      sendBtn: "Send",
+      errPlaceCore: "Place the core orchestrator (CORE) first",
+      errPlaceExpert: "Place at least 1 expert model",
+      moaUsageTitle: "Think Tank usage overview",
+      presetColon: "Preset: ",
+      moaEmptyRoundtable: "No models on the roundtable yet",
+      moaSessions: "MoA sessions",
+      sessionsSuffix: " sessions",
+      totalMoaToken: "Total: MoA tokens ",
+      midMoaSessions: " · MoA sessions ",
+      moaChatTitle: "Think Tank chat",
+      switchPresetBtn: "Switch preset",
+      closeWindow: "Close window",
+      closeX: "✕ Close",
+      presetLabel: "Preset",
+      newPresetPh: "New preset name",
+      createBtn: "Create",
+      addPresetBtn: "+ Preset",
+      deleteBtn: "Delete",
+      isDefaultBtn: "Default ✓",
+      setDefaultBtn: "Set default",
+      deliberationMode: "Deliberation mode",
+      singleRound: "Single round",
+      singleRoundTip: "Experts answer independently in parallel; the conductor synthesizes.",
+      multiRound: "Multi-round",
+      multiRoundTip: "Experts analyze in parallel each round; later rounds cross-examine and refine the prior round, stopping early once consensus is high (max 5 rounds).",
+      removeConductor: "Remove conductor model",
+      removeExpert: "Remove this expert",
+      addExpertTip: "Add an expert seat",
+      contextUnknown: "Context unknown",
+      modelIdColon: "Model ID: ",
+      debateRoleLabel: "Debate role (differentiated perspective)",
+      debateRolePh: "e.g. Lead logician / Fact-checker / Ideator",
+      sessionCountLbl: "Sessions",
+      totalTokenLbl: "Total tokens",
+      avgPerSession: "Avg/session",
+      avgTokenTip: "Average tokens this model uses per session",
+      lastActive: "Last active",
+      noUsageRecord: "No usage yet",
+      justNow: "just now",
+      minAgo: " min ago",
+      hourAgo: " h ago",
+      dayAgo: " days ago",
+      haveSessionsPre: "",
+      haveSessionsSuf: " sessions",
+      moaTokenStatsFooter: "MIXTURE OF AGENTS · token usage stats",
+      switchPresetTip: "Switch preset (same setting as «Preset» above)",
+      openNewWindowTip: "Open the chat page in a new window",
+      newWindowBtn: "⛶ New window",
+      applyHermesTip: "Persist the roundtable config to Hermes (also copies the YAML to the clipboard)",
+      appliedCopied: "Applied + copied ✓",
+      applyingState: "Applying…",
+      applyToHermesBtn: "Apply to Hermes",
+      loadingProviders: "Loading provider list…",
+      noProbedModels: "No model list detected for this provider — click 🔄 Refresh at the top right",
+      freeModels: "Free models",
+      freeModelsTip: "Click to search models containing 'free'",
     };
 
     // 繁體中文（Traditional Chinese）
@@ -489,6 +699,111 @@
       moaTaglinePrefix: "競技場排行榜 第",
       moaTaglineMid: " 位 | 即時超頻核心",
       moaClose: "關閉",
+      proxyBadFormat: "代理位址格式無效",
+      refreshedOk: "✓ 已重新整理",
+      refreshFailedShort: "✕ 失敗",
+      refreshNoChange: "⚠ 無變化",
+      proxyFillHostPort: "請填寫位址和連接埠",
+      modelRefreshFailed: "模型重新整理失敗",
+      modelRefreshTimeout: "模型重新整理背景任務逾時",
+      plmWeixin: "微信",
+      plmFeishu: "飛書",
+      plmDingtalk: "釘釘",
+      plmWecom: "企業微信",
+      plmWecomCb: "企業微信回呼",
+      plmQqbot: "QQ 機器人",
+      plmYuanbao: "元寶",
+      plmEmail: "郵件",
+      plmCron: "定時任務",
+      statHintChannels: " 個活躍通道",
+      statHintProviders: " 個供應商",
+      statHintModels: " 可選模型",
+      statHintEnabled: " 已開啟模型",
+      selectPlaceholder: "選擇…",
+      keyItemPrefix: "密鑰 ",
+      keyCurrentPrefix: "目前 ",
+      keyKeepBlank: "（留空則保留）",
+      errKeyOrEnv: "key_env 或 api_key 至少填一項",
+      provRemoveConfirmPre: "確定要移除供應商 「",
+      provRemoveConfirmPost: "」嗎？\n\n此操作無法復原。",
+      envVar: "環境變數",
+      errPresetExists: "預設名稱已存在：",
+      errKeepOnePreset: "至少保留一個預設",
+      expertPrefix: "專家 ",
+      conductorSynthParen: "指揮綜合 (",
+      fromChannel: "來自通道：",
+      discussionWord: "討論",
+      youWord: "你",
+      moaReply: "智囊團回覆",
+      fromPrefix: "來自 ",
+      expertsSuffixSynth: " 位專家 · 指揮綜合",
+      copyReplyTip: "複製此回覆（含專家與指揮）",
+      conductorSynth: "指揮綜合",
+      loadingSessionDetail: "載入會話詳情中…",
+      consensusReport: "共識報告",
+      dynamicConverge: "動態收斂·提前終止",
+      copyConsensus: "複製共識報告",
+      moaDeliberating: "智囊團正在討論，請稍候…",
+      moaNoDiscussion: "此組合方案暫無討論記錄，在下方輸入問題發起智囊團討論。",
+      moaAskPh: "向智囊團提問…",
+      discussing: "討論中…",
+      sendBtn: "傳送",
+      errPlaceCore: "請先放置核心編排器 (CORE)",
+      errPlaceExpert: "請至少放置 1 個專家模型",
+      moaUsageTitle: "智囊團用量總覽",
+      presetColon: "組合方案：",
+      moaEmptyRoundtable: "目前圓桌未放置任何模型",
+      moaSessions: "MoA 會話",
+      sessionsSuffix: " 會話",
+      totalMoaToken: "總計：MoA TOKEN ",
+      midMoaSessions: " · MoA 會話 ",
+      moaChatTitle: "智囊團對話",
+      switchPresetBtn: "切換組合方案",
+      closeWindow: "關閉視窗",
+      closeX: "✕ 關閉",
+      presetLabel: "組合方案",
+      newPresetPh: "新預設名稱",
+      createBtn: "建立",
+      addPresetBtn: "+ 預設",
+      deleteBtn: "刪除",
+      isDefaultBtn: "預設 ✓",
+      setDefaultBtn: "設為預設",
+      deliberationMode: "會商模式",
+      singleRound: "單輪會商",
+      singleRoundTip: "各專家並行獨立作答，由指揮統一彙整",
+      multiRound: "多輪辯證",
+      multiRoundTip: "專家每輪並行分析；下一輪基於上一輪觀點交叉質疑與修正，形成高共識後可提前結束（最多 5 輪）",
+      removeConductor: "移除指揮模型",
+      removeExpert: "移除該專家",
+      addExpertTip: "新增一個專家席位",
+      contextUnknown: "上下文未知",
+      modelIdColon: "模型 ID：",
+      debateRoleLabel: "辯論角色（差異化視角）",
+      debateRolePh: "如：邏輯主審 / 事實查核 / 創意發散",
+      sessionCountLbl: "會話數",
+      totalTokenLbl: "總 Token",
+      avgPerSession: "平均/會話",
+      avgTokenTip: "該模型每次會話平均消耗的 Token 數",
+      lastActive: "最近活躍",
+      noUsageRecord: "暫無使用記錄",
+      justNow: "剛剛",
+      minAgo: " 分鐘前",
+      hourAgo: " 小時前",
+      dayAgo: " 天前",
+      haveSessionsPre: "有 ",
+      haveSessionsSuf: " 次會話",
+      moaTokenStatsFooter: "MIXTURE OF AGENTS · Token 用量統計",
+      switchPresetTip: "切換組合方案（與上方「組合方案」同一設定）",
+      openNewWindowTip: "在新視窗開啟對話頁面",
+      newWindowBtn: "⛶ 新視窗",
+      applyHermesTip: "將圓桌配置持久化到 Hermes（自動同步複製 YAML 到剪貼簿）",
+      appliedCopied: "已套用 + 已複製 ✓",
+      applyingState: "套用中…",
+      applyToHermesBtn: "套用到 Hermes",
+      loadingProviders: "供應商清單載入中…",
+      noProbedModels: "此供應商未偵測到模型清單，請點擊右上角 🔄 重新整理",
+      freeModels: "免費模型",
+      freeModelsTip: "點擊搜尋包含 free 的模型",
     };
 
     var _I18N_MAP = { "zh": I18N_ZH, "en": I18N_EN, "zh-hant": I18N_ZH_HANT };
@@ -1634,14 +1949,14 @@
     }
     function platformLabel(p) {
       var m = {
-        "weixin":"微信","feishu":"飞书",
+        "weixin":T.plmWeixin,"feishu":T.plmFeishu,
         "telegram":"Telegram","discord":"Discord","slack":"Slack",
         "whatsapp":"WhatsApp","whatsapp_cloud":"WhatsApp Cloud","signal":"Signal",
         "matrix":"Matrix","line":"Line","kakaotalk":"KakaoTalk",
-        "mattermost":"Mattermost","dingtalk":"钉钉","wecom":"企业微信",
-        "wecom_callback":"企业微信回调","qqbot":"QQ 机器人","yuanbao":"元宝",
+        "mattermost":"Mattermost","dingtalk":T.plmDingtalk,"wecom":T.plmWecom,
+        "wecom_callback":T.plmWecomCb,"qqbot":T.plmQqbot,"yuanbao":T.plmYuanbao,
         "webhook":"Webhook","api_server":"API Server","bluebubbles":"BlueBubbles",
-        "email":"邮件","homeassistant":"Home Assistant","cron":"定时任务"
+        "email":T.plmEmail,"homeassistant":"Home Assistant","cron":T.plmCron
       };
       return (m[p] || p);
     }
@@ -1662,7 +1977,7 @@
     }
 
     // 渠道来源图标映射
-    var _SRC_ICONS = { "微信": "💬", "飞书": "🚀", "飞书2": "🚀", "Telegram": "✈️",
+    var _SRC_ICONS = { "微信": "💬", "飞书": "🚀", "Telegram": "✈️",
       "企业微信": "📢", "钉钉": "🔔", "QQ机器人": "🐧", "Slack": "💼",
       "Discord": "🎮", "WhatsApp": "📱", "Signal": "🔒", "panel": "🖥️" };
     function _sourceIcon(src) {
@@ -1684,19 +1999,19 @@
       return h("div", { className: "dc-stats dc-stats-2x2" },
         h("div", { className: "dc-stat" },
           h("span", { className: "dc-stat-value" }, String(props.channelCount)),
-          h("span", { className: "dc-stat-hint" }, " 个活跃渠道")
+          h("span", { className: "dc-stat-hint" }, T.statHintChannels)
         ),
         h("div", { className: "dc-stat" },
           h("span", { className: "dc-stat-value" }, String(props.providerCount)),
-          h("span", { className: "dc-stat-hint" }, " 个提供商")
+          h("span", { className: "dc-stat-hint" }, T.statHintProviders)
         ),
         h("div", { className: "dc-stat" },
           h("span", { className: "dc-stat-value" }, String(props.modelCount)),
-          h("span", { className: "dc-stat-hint" }, " 可选模型")
+          h("span", { className: "dc-stat-hint" }, T.statHintModels)
         ),
         h("div", { className: "dc-stat" },
           h("span", { className: cn("dc-stat-value", props.visibleCount > 0 ? "dc-ok" : "dc-warn") }, String(props.visibleCount)),
-          h("span", { className: "dc-stat-hint" }, " 已开启模型")
+          h("span", { className: "dc-stat-hint" }, T.statHintEnabled)
         )
       );
     }
@@ -1748,7 +2063,7 @@
       return h("select", {
         value: props.value || "",
         onChange: function (e) { if (props.onChange) props.onChange(e.target.value); }
-      }, h("option", { value: "" }, props.placeholder || "选择…"), opts);
+      }, h("option", { value: "" }, props.placeholder || T.selectPlaceholder), opts);
     }
 
     function ProviderSelect(props) {
@@ -1758,7 +2073,7 @@
       return h("select", {
         value: props.value || "",
         onChange: function (e) { if (props.onChange) props.onChange(e.target.value); }
-      }, h("option", { value: "" }, props.placeholder || "选择…"), opts);
+      }, h("option", { value: "" }, props.placeholder || T.selectPlaceholder), opts);
     }
 
     // ---- Key control (selector for a provider's API keys) -----------------
@@ -2062,8 +2377,8 @@
         ),
         isOpen && h("div", { className: "dc-vis-group-body" },
           (pg.models || []).length === 0
-            ? h("div", { className: "dc-empty", style: { padding: ".8rem .5rem", fontSize: ".82rem", color: "var(--dc-text-2)" } }, "\u8be5\u63d0\u4f9b\u5546\u672a\u63a2\u6d4b\u5230\u6a21\u578b\u5217\u8868\uff0c\u8bf7\u70b9\u51fb\u53f3\u4e0a\u89d2 \u{1f504} \u5237\u65b0")
-            : filtered.length === 0 && h("div", { className: "dc-empty", style: { padding: ".8rem .5rem", fontSize: ".82rem" } }, "\u65e0\u5339\u914d\u6a21\u578b"),
+            ? h("div", { className: "dc-empty", style: { padding: ".8rem .5rem", fontSize: ".82rem", color: "var(--dc-text-2)" } }, T.noProbedModels)
+            : filtered.length === 0 && h("div", { className: "dc-empty", style: { padding: ".8rem .5rem", fontSize: ".82rem" } }, T.visNoMatch),
           filtered.map(function (m) {
             var key = pg.slug + "::" + m;
             return h("div", { key: m, className: "dc-vis-item" },
@@ -2172,7 +2487,7 @@
               var parsedProxy = new URL(rawProxy.indexOf("://") === -1 ? "http://" + rawProxy : rawProxy);
               setProxyHost((parsedProxy.hostname || "").replace(/^\[|\]$/g, ""));
               setProxyPort(Number(parsedProxy.port) || (parsedProxy.protocol === "https:" ? 443 : 80));
-            } catch (e) { setProxyErr("代理地址格式无效"); }
+            } catch (e) { setProxyErr(T.proxyBadFormat); }
           } else if (d.proxies && d.proxies.length > 0) {
             var active = d.proxies[d.active_index || 0] || {};
             setProxyHost(active.host || "");
@@ -2305,10 +2620,10 @@
             h("button", {
               type: "button",
               className: "dc-btn dc-btn-ghost dc-vis-free-btn",
-              "aria-label": "\u514d\u8d39\u6a21\u578b",
-              title: "\u70b9\u51fb\u641c\u7d22\u5305\u542b free \u7684\u6a21\u578b",
+              "aria-label": T.freeModels,
+              title: T.freeModelsTip,
               onClick: function () { setQuery("free"); }
-            }, "\u514d\u8d39\u6a21\u578b"),
+            }, T.freeModels),
             query && h("button", {
               type: "button",
               className: "dc-btn dc-btn-ghost dc-vis-search-btn",
@@ -2326,9 +2641,9 @@
             },
               isRefreshing
                 ? h("span", { className: "dc-vis-refresh-spinner" }, "⟳")
-                : (refreshMsg === "refresh_ok" ? "✓ 已刷新"
-                  : (refreshMsg === "refresh_err" ? "✕ 失败"
-                    : (refreshMsg === "refresh_empty" ? "⚠ 无变化" : T.refresh)))
+                : (refreshMsg === "refresh_ok" ? T.refreshedOk
+                  : (refreshMsg === "refresh_err" ? T.refreshFailedShort
+                    : (refreshMsg === "refresh_empty" ? T.refreshNoChange : T.refresh)))
             ),
             h("button", {
               type: "button",
@@ -2402,7 +2717,7 @@
       function testProxy() {
         var h = (host || "").trim();
         var p = Number(port) || 0;
-        if (!h || !p) { setTestResult("fail"); setTestMsg("请填写地址和端口"); return; }
+        if (!h || !p) { setTestResult("fail"); setTestMsg(T.proxyFillHostPort); return; }
         setTesting(true); setTestResult(null); setTestMsg("");
         fetchJSON(API + "/proxy", {
           method: "POST",
@@ -2468,7 +2783,7 @@
               disabled: isTesting
             }, isTesting ? T.proxyTesting : (T.proxyTestBtn || "\u6d4b\u8bd5\u4ee3\u7406")),
             h("button", { type: "button", className: "dc-btn dc-btn-primary", onClick: submit, disabled: isSaving },
-              isSaving ? "\u4fdd\u5b58\u4e2d\u2026" : (props.saved ? T.proxySavedOk : "\u4fdd\u5b58"))
+              isSaving ? T.btnSaving : (props.saved ? T.proxySavedOk : T.btnSave))
           )
         )
       );
@@ -2535,7 +2850,7 @@
             fetchJSON(API + "/providers/" + encodeURIComponent(s) + "/keys", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ api_key: (row.api_key || "").trim(), label: ("密钥 " + (i + 2)) })
+              body: JSON.stringify({ api_key: (row.api_key || "").trim(), label: (T.keyItemPrefix + (i + 2)) })
             }).then(function () {
               pending--;
               if (pending === 0) { setAdding(false); props.onClose && props.onClose(true); }
@@ -2574,7 +2889,7 @@
               return h("div", { key: "kr_" + idx, className: "dc-field" },
                 idx === 0 && h("span", { className: "dc-field-label" }, T.provAddKeyPh),
                 h("div", { style: { display: "flex", gap: ".5rem", alignItems: "center" } },
-                  h("input", { type: "text", className: "dc-key-input", value: row.api_key || "", onChange: function (e) { updateKeyRow(idx, "api_key", e.target.value); }, placeholder: row.preview ? ("当前 " + row.preview + "（留空则保留）") : T.provAddKeyPh }),
+                  h("input", { type: "text", className: "dc-key-input", value: row.api_key || "", onChange: function (e) { updateKeyRow(idx, "api_key", e.target.value); }, placeholder: row.preview ? (T.keyCurrentPrefix + row.preview + T.keyKeepBlank) : T.provAddKeyPh }),
                   idx > 0 && h("button", { type: "button", className: "dc-btn dc-btn-sm dc-btn-ghost dc-key-row-rm", onClick: function () { removeKeyRow(idx); }, title: T.provRemoveKey }, "\u2212")
                 )
               );
@@ -2679,7 +2994,7 @@
             fetchJSON(API + "/providers/" + encodeURIComponent(slug) + "/keys", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ api_key: (row.api_key || "").trim(), label: ("密钥 " + (i + 2)) })
+              body: JSON.stringify({ api_key: (row.api_key || "").trim(), label: (T.keyItemPrefix + (i + 2)) })
             }).then(function () {
               pending--;
               if (pending === 0) { setSaving(false); props.onClose && props.onClose(true); }
@@ -2701,7 +3016,7 @@
           ),
           h("div", { className: "dc-modal-body" },
             isLoading
-              ? h("div", { className: "dc-inline-err" }, "加载中…")
+              ? h("div", { className: "dc-inline-err" }, T.loading)
               : [
                 h("label", { key: "en", className: "dc-field" },
                   h("span", { className: "dc-field-label" }, T.provEditNamePh),
@@ -2765,7 +3080,7 @@
         var lv = (label[0] || "").trim();
         var ev = (env[0] || "").trim();
         var vv = (val[0] || "").trim();
-        if (!ev && !vv) { setErr("key_env 或 api_key 至少填一项"); return; }
+        if (!ev && !vv) { setErr(T.errKeyOrEnv); return; }
         setAdding(true); setErr(null);
         fetchJSON(API + "/providers/" + encodeURIComponent(slug) + "/keys", {
           method: "POST",
@@ -2796,7 +3111,7 @@
           ),
           h("div", { className: "dc-modal-body" },
             isLoading
-              ? h("div", { className: "dc-inline-err" }, "加载中…")
+              ? h("div", { className: "dc-inline-err" }, T.loading)
               : h("div", null,
                 h("div", { className: "dc-keys-list-title" }, T.provKeysListTitle),
                 kList.length === 0
@@ -2867,7 +3182,7 @@
         }).then(function () { props.onChanged(); }).catch(function () { props.onChanged(); });
       }
       function removeProvider() {
-        if (!window.confirm('确定要移除提供商 "' + pg.slug + '" 吗？\n\n此操作不可撤销。')) return;
+        if (!window.confirm(T.provRemoveConfirmPre + pg.slug + T.provRemoveConfirmPost)) return;
         fetchJSON(API + "/providers/" + encodeURIComponent(pg.slug), { method: "DELETE" })
           .then(function () { props.onChanged(); }).catch(function () { props.onChanged(); });
       }
@@ -2880,7 +3195,7 @@
         ),
         h("div", { className: "dc-prov-row-badges" },
           isConf && Badge(T.configured, "accent"),
-          isEnvAuth && Badge("环境变量", "muted")
+          isEnvAuth && Badge(T.envVar, "muted")
         ),
         h("div", { className: "dc-prov-row-actions" },
           h("button", { className: "dc-btn dc-btn-sm", onClick: function () { setEditOpen(true); } }, T.provEditBtn),
@@ -3125,7 +3440,7 @@
         var name = (newPresetName || "").trim();
         if (!name) return;
         var existing = getPresetNames();
-        if (existing.indexOf(name) >= 0) { setApplyState({ applying: false, applied: false, error: "预设名已存在: " + name }); return; }
+        if (existing.indexOf(name) >= 0) { setApplyState({ applying: false, applied: false, error: T.errPresetExists + name }); return; }
         var full = moaFull || {};
         var presets = full.presets ? Object.assign({}, full.presets) : {};
         presets[name] = { enabled: true, reference_models: [], aggregator: { provider: "", model: "" }, max_tokens: 4096 };
@@ -3145,7 +3460,7 @@
       // ── 删除当前预设 ──
       function deleteCurrentPreset() {
         var names = getPresetNames();
-        if (names.length <= 1) { setApplyState({ applying: false, applied: false, error: "至少保留一个预设" }); return; }
+        if (names.length <= 1) { setApplyState({ applying: false, applied: false, error: T.errKeepOnePreset }); return; }
         var current = activePreset;
         var remaining = names.filter(function (n) { return n !== current; });
         var next = remaining[0];
@@ -3414,10 +3729,10 @@
       function moaTurnToText(turn) {
         var lines = [];
         (turn.references || []).forEach(function (ref, i) {
-          lines.push("专家 " + (i + 1) + " (" + (ref.provider || "") + "/" + (ref.model || "?") + "):\n" + (ref.content || ""));
+          lines.push(T.expertPrefix + (i + 1) + " (" + (ref.provider || "") + "/" + (ref.model || "?") + "):\n" + (ref.content || ""));
         });
         var agg = turn.aggregator || {};
-        if (agg.content) lines.push("指挥综合 (" + (agg.provider || "") + "/" + (agg.model || "?") + "):\n" + agg.content);
+        if (agg.content) lines.push(T.conductorSynthParen + (agg.provider || "") + "/" + (agg.model || "?") + "):\n" + agg.content);
         return lines.join("\n\n");
       }
 
@@ -3433,13 +3748,13 @@
           var d = details[s.session_id];
           // 会话分隔线（含渠道来源标识）
           var srcTag = s.source && s.source !== "panel"
-            ? h("span", { className: "dc-chat-src-tag", title: "来自渠道: " + s.source },
+            ? h("span", { className: "dc-chat-src-tag", title: T.fromChannel + s.source },
                 _sourceIcon(s.source), s.source)
             : null;
           chatMessages.push(h("div", { className: "dc-chat-divider" },
             h("span", { className: "dc-chat-divider-time" }, (s.created_at_iso || "").replace("T", " ").slice(5, 16)),
             srcTag,
-            h("span", { className: "dc-chat-divider-prompt" }, (s.prompt || "").slice(0, 30) || "讨论")
+            h("span", { className: "dc-chat-divider-prompt" }, (s.prompt || "").slice(0, 30) || T.discussionWord)
           ));
           if (d && d.turns) {
             d.turns.forEach(function (turn) {
@@ -3448,7 +3763,7 @@
                 h("div", { className: "dc-chat-bubble dc-chat-bubble-user" },
                   h("span", { className: "dc-chat-avatar" }, "🧑"),
                   h("div", { className: "dc-chat-body" },
-                    h("span", { className: "dc-chat-sender" }, "你"),
+                    h("span", { className: "dc-chat-sender" }, T.youWord),
                     h("div", { className: "dc-chat-text" }, d.prompt || s.prompt || "")
                   )
                 )
@@ -3463,12 +3778,12 @@
                   // 卡片头部：智囊团标识 + 渠道来源
                   h("div", { className: "dc-chat-card-header" },
                     h("span", { className: "dc-chat-card-icon" }, "🤖"),
-                    h("span", { className: "dc-chat-card-title" }, "智囊团回复"),
-                    _moaSrc ? h("span", { className: "dc-chat-src-badge", title: "来自 " + _moaSrc }, _sourceIcon(_moaSrc), _moaSrc) : null,
-                    refs.length ? h("span", { className: "dc-chat-card-meta" }, refs.length + " 位专家 · 指挥综合") : null,
+                    h("span", { className: "dc-chat-card-title" }, T.moaReply),
+                    _moaSrc ? h("span", { className: "dc-chat-src-badge", title: T.fromPrefix + _moaSrc }, _sourceIcon(_moaSrc), _moaSrc) : null,
+                    refs.length ? h("span", { className: "dc-chat-card-meta" }, refs.length + T.expertsSuffixSynth) : null,
                     h("button", {
                       className: "dc-chat-copy-btn",
-                      title: "复制此回复（含专家与指挥）",
+                      title: T.copyReplyTip,
                       onClick: function (e) { copyTextToClipboard(moaTurnToText(turn), e.currentTarget); }
                     }, "⧉")
                   ),
@@ -3477,7 +3792,7 @@
                     refs.map(function (ref, i) {
                       return h("div", { className: "dc-chat-expert-item" },
                         h("div", { className: "dc-chat-expert-label" },
-                          "专家 " + (i + 1),
+                          T.expertPrefix + (i + 1),
                           h("span", { className: "dc-chat-expert-model" }, (ref.provider || "") + "/" + (ref.model || "?"))
                         ),
                         h("div", { className: "dc-chat-expert-text" }, ref.content || "")
@@ -3490,7 +3805,7 @@
                   agg.content ? h("div", { className: "dc-chat-card-agg" },
                     h("div", { className: "dc-chat-agg-label" },
                       h("span", { className: "dc-chat-agg-icon" }, "🧠"),
-                      "指挥综合",
+                      T.conductorSynth,
                       h("span", { className: "dc-chat-agg-model" }, (agg.provider || "") + "/" + (agg.model || "?"))
                     ),
                     h("div", { className: "dc-chat-agg-text" }, agg.content)
@@ -3499,7 +3814,7 @@
               ));
             });
           } else if (!d) {
-            chatMessages.push(h("div", { className: "dc-chat-loading-hint" }, "加载会话详情中…"));
+            chatMessages.push(h("div", { className: "dc-chat-loading-hint" }, T.loadingSessionDetail));
           }
           // ── 结构化共识报告（P1）：共识/分歧/推荐方案/已砍选项 ──
           if (d && d.consensus_report && d.consensus_report.markdown) {
@@ -3507,11 +3822,11 @@
               h("div", { className: "dc-chat-card dc-chat-card-consensus" },
                 h("div", { className: "dc-chat-card-header" },
                   h("span", { className: "dc-chat-card-icon" }, "📊"),
-                  h("span", { className: "dc-chat-card-title" }, "共识报告"),
-                  d.auto_stopped ? h("span", { className: "dc-chat-card-meta" }, "动态收敛·提前终止") : null,
+                  h("span", { className: "dc-chat-card-title" }, T.consensusReport),
+                  d.auto_stopped ? h("span", { className: "dc-chat-card-meta" }, T.dynamicConverge) : null,
                   h("button", {
                     className: "dc-chat-copy-btn",
-                    title: "复制共识报告",
+                    title: T.copyConsensus,
                     onClick: function (e) { copyTextToClipboard(d.consensus_report.markdown, e.currentTarget); }
                   }, "⧉")
                 ),
@@ -3536,7 +3851,7 @@
 
         var bodyContent;
         if (moaChat.loading) {
-          bodyContent = h("div", { className: "dc-chat-hint" }, "加载中…");
+          bodyContent = h("div", { className: "dc-chat-hint" }, T.loading);
         } else if (moaChat.running) {
           // 运行中：历史消息 + 当前用户输入气泡 + 加载提示
           var runningMessages = chatMessages.slice();
@@ -3546,7 +3861,7 @@
               h("div", { className: "dc-chat-bubble dc-chat-bubble-user" },
                 h("span", { className: "dc-chat-avatar" }, "🧑"),
                 h("div", { className: "dc-chat-body" },
-                  h("span", { className: "dc-chat-sender" }, "你"),
+                  h("span", { className: "dc-chat-sender" }, T.youWord),
                   h("div", { className: "dc-chat-text" }, moaChat.input.trim())
                 )
               )
@@ -3554,12 +3869,12 @@
           }
           bodyContent = [
             h("div", { className: "dc-chat-messages" }, runningMessages),
-            h("div", { className: "dc-chat-running" }, "智囊团正在讨论，请稍候…")
+            h("div", { className: "dc-chat-running" }, T.moaDeliberating)
           ];
         } else if (chatMessages.length) {
           bodyContent = h("div", { className: "dc-chat-messages" }, chatMessages);
         } else {
-          bodyContent = h("div", { className: "dc-chat-hint" }, "该组合方案暂无讨论记录，在下方输入问题发起智囊团讨论。");
+          bodyContent = h("div", { className: "dc-chat-hint" }, T.moaNoDiscussion);
         }
 
         return h("div", { className: isFs ? "dc-chat dc-chat-fs" : "dc-chat" },
@@ -3577,7 +3892,7 @@
             h("input", {
               className: "dc-chat-input",
               type: "text",
-              placeholder: "向智囊团提问…",
+              placeholder: T.moaAskPh,
               value: moaChat.input,
               onInput: function (e) { setMoaChat(function (s) { return Object.assign({}, s, { input: e.target.value }); }); },
               onKeyDown: function (e) { if (e.key === "Enter") runMoaChat(); }
@@ -3586,7 +3901,7 @@
               className: cn("dc-btn dc-btn-sm dc-btn-primary", moaChat.running && "dc-btn-loading"),
               onClick: runMoaChat,
               disabled: moaChat.running
-            }, moaChat.running ? "讨论中…" : "发送")
+            }, moaChat.running ? T.discussing : T.sendBtn)
           )
         );
       }
@@ -3874,12 +4189,12 @@
 
       function applyToHermes() {
         if (!moa.orchestrator) {
-          setApplyState({ applying: false, applied: false, error: "请先放置核心编排器 (CORE)" });
+          setApplyState({ applying: false, applied: false, error: T.errPlaceCore });
           return;
         }
         var experts = moa.experts.filter(Boolean);
         if (!experts.length) {
-          setApplyState({ applying: false, applied: false, error: "请至少放置 1 个专家模型" });
+          setApplyState({ applying: false, applied: false, error: T.errPlaceExpert });
           return;
         }
         // 合并保留已有 presets：只更新当前激活的 preset，不整体覆盖 moa 配置。
@@ -3981,9 +4296,9 @@
 
       function renderSummaryPanel() {
         var items = [];
-        if (moa.orchestrator) items.push({ role: "指挥", model: moa.orchestrator });
+        if (moa.orchestrator) items.push({ role: T.moaConductor, model: moa.orchestrator });
         moa.experts.forEach(function (m, i) {
-          if (m) items.push({ role: "臭皮匠 " + (i + 1), model: m });
+          if (m) items.push({ role: (T.moaExpert + " ") + (i + 1), model: m });
         });
         // MoA 专属总量（非 Hermes 全局）
         // Compute max from actual per-model data (grand_total may be empty)
@@ -4021,14 +4336,14 @@
           h("div", { className: "dc-moa-detail-head" },
             h("div", { className: "dc-moa-detail-meta" },
               h("div", { className: "dc-moa-detail-topline" },
-                h("span", { className: "dc-moa-detail-name" }, "智囊团用量总览")
+                h("span", { className: "dc-moa-detail-name" }, T.moaUsageTitle)
               ),
-              h("div", { className: "dc-moa-detail-provider" }, "组合方案：" + (activePreset || "default"))
+              h("div", { className: "dc-moa-detail-provider" }, T.presetColon + (activePreset || "default"))
             )
           ),
           h("div", { className: "dc-moa-summary-list" },
             items.length === 0
-              ? h("div", { className: "dc-moa-summary-empty" }, "当前圆桌未放置任何模型")
+              ? h("div", { className: "dc-moa-summary-empty" }, T.moaEmptyRoundtable)
               : items.map(function (item, idx) {
                   // 用 MoA 专属用量数据（expert 用 name/model 作 key，不是 id）
                   var _mid = (item.model && (item.model.name || item.model.model)) || "";
@@ -4037,7 +4352,7 @@
                   return h("div", { key: "sum-" + idx, className: "dc-moa-summary-row-flat" },
                     h("div", { className: "dc-moa-summary-name-flat" },
                       h("span", { className: "dc-moa-summary-model-name" }, item.model.name),
-                      item.role !== "指挥"
+                      item.role !== T.moaConductor
                         ? h("span", { className: "dc-moa-summary-role-flat" }, item.role)
                         : null
                     ),
@@ -4054,7 +4369,7 @@
                     ),
                     // MoA 会话行
                     h("div", { className: "dc-moa-bar-row dc-moa-bar-row-compact" },
-                      h("span", { className: "dc-moa-bar-lbl" }, "MoA 会话"),
+                      h("span", { className: "dc-moa-bar-lbl" }, T.moaSessions),
                       h("div", { className: "dc-moa-bar-track" },
                         h("div", {
                           className: "dc-moa-bar-fill dc-moa-bar-session",
@@ -4062,7 +4377,7 @@
                             ? Math.min((mu.session_count || 0) / moaTotalSessions * 100, 100) : 0) + "%" }
                         })
                       ),
-                      h("span", { className: "dc-moa-bar-val" }, String(mu.session_count || 0) + " 会话")
+                      h("span", { className: "dc-moa-bar-val" }, String(mu.session_count || 0) + T.sessionsSuffix)
                     )
                   );
                 })
@@ -4070,8 +4385,8 @@
           // ── 渠道来源数据已纳入上方 MoA 总计，不再单独展示 ──
           null,
           h("div", { className: "dc-moa-detail-footer" },
-            "总计：MoA TOKEN " + fmtTok(moaTotalIn + moaTotalOut) +
-            " · MoA 会话 " + moaTotalSessions
+            T.totalMoaToken + fmtTok(moaTotalIn + moaTotalOut) +
+            T.midMoaSessions + moaTotalSessions
           )
         );
       }
@@ -4082,12 +4397,12 @@
           h("div", { className: "dc-moa-copy-panel" },
             h("div", { className: "dc-moa-copy-header" },
               h("div", { className: "dc-moa-copy-header-left" },
-                h("span", null, "智囊团对话"),
+                h("span", null, T.moaChatTitle),
                 h("div", { className: "dc-moa-copy-select-wrap" },
                   h("select", {
                     className: "dc-moa-copy-select",
                     value: activePreset,
-                    title: "切换组合方案",
+                    title: T.switchPresetBtn,
                     onChange: function (e) { switchPreset(e.target.value); }
                   },
                     getPresetNames().map(function (name) {
@@ -4100,8 +4415,8 @@
                 h("button", {
                   className: "dc-btn dc-btn-sm dc-btn-ghost",
                   onClick: function () { try { window.close(); } catch (e) { history.back(); } },
-                  title: "关闭窗口"
-                }, "✕ 关闭")
+                  title: T.closeWindow
+                }, T.closeX)
               )
             ),
             applyState.error ? h("div", { className: "dc-moa-apply-err" }, applyState.error) : null,
@@ -4114,7 +4429,7 @@
 
         // ── 预设管理栏（Preset Bar）──
         h("div", { className: "dc-moa-preset-bar" },
-          h("div", { className: "dc-moa-preset-label" }, "组合方案"),
+          h("div", { className: "dc-moa-preset-label" }, T.presetLabel),
           // 预设选择器（下拉/标签式）
           h("div", { className: "dc-moa-preset-selector" },
             getPresetNames().map(function (name) {
@@ -4133,27 +4448,27 @@
                   h("input", {
                     className: "dc-moa-preset-input",
                     type: "text",
-                    placeholder: "新预设名称",
+                    placeholder: T.newPresetPh,
                     value: newPresetName,
                     onChange: function (e) { setNewPresetName(e.target.value); },
                     onKeyDown: function (e) { if (e.key === "Enter") { e.preventDefault(); addPreset(); } },
                     autoFocus: true
                   }),
-                  h("button", { className: cn("dc-btn dc-moa-preset-btn"), onClick: addPreset }, "创建"),
-                  h("button", { className: cn("dc-btn dc-moa-preset-btn", "dc-btn-ghost"), onClick: function () { setShowAddPreset(false); setNewPresetName(""); } }, "取消")
+                  h("button", { className: cn("dc-btn dc-moa-preset-btn"), onClick: addPreset }, T.createBtn),
+                  h("button", { className: cn("dc-btn dc-moa-preset-btn", "dc-btn-ghost"), onClick: function () { setShowAddPreset(false); setNewPresetName(""); } }, T.cancel)
                 )
-              : h("button", { className: cn("dc-btn dc-moa-preset-btn"), onClick: function () { setShowAddPreset(true); } }, "+ 预设"),
+              : h("button", { className: cn("dc-btn dc-moa-preset-btn"), onClick: function () { setShowAddPreset(true); } }, T.addPresetBtn),
             // 删除预设
             h("button", {
               className: cn("dc-btn dc-moa-preset-btn", getPresetNames().length <= 1 && "dc-btn-disabled"),
               onClick: deleteCurrentPreset,
               disabled: getPresetNames().length <= 1
-            }, "删除"),
+            }, T.deleteBtn),
             // 设为默认
             h("button", {
               className: cn("dc-btn dc-moa-preset-btn", (moaFull && moaFull.default_preset === activePreset) && "dc-btn-success"),
               onClick: setAsDefault
-            }, (moaFull && moaFull.default_preset === activePreset) ? "默认 ✓" : "设默认")
+            }, (moaFull && moaFull.default_preset === activePreset) ? T.isDefaultBtn : T.setDefaultBtn)
           )
         ),
 
@@ -4233,7 +4548,7 @@
           h("div", { className: "dc-moa-panel-header" },
             h("div", { className: "dc-moa-panel-title" }, T.moaCoreTitle),
             h("div", { className: "dc-moa-debate-wrap" },
-              h("div", { className: "dc-moa-debate-modes", role: "group", "aria-label": "会商模式" },
+              h("div", { className: "dc-moa-debate-modes", role: "group", "aria-label": T.deliberationMode },
                 h("button", {
                   type: "button",
                   className: cn("dc-moa-debate-mode", !debateOn && "active"),
@@ -4247,9 +4562,9 @@
                     autoSaveCurrentPreset(moa.orchestrator, moa.experts, override);
                   }
                 },
-                  "单轮会商",
+                  T.singleRound,
                   h("span", { id: "dc-moa-single-tip", className: "dc-moa-debate-tooltip", role: "tooltip" },
-                    "各专家并行独立作答，由指挥统一汇总"
+                    T.singleRoundTip
                   )
                 ),
                 h("button", {
@@ -4266,9 +4581,9 @@
                     autoSaveCurrentPreset(moa.orchestrator, moa.experts, override);
                   }
                 },
-                  "多轮辩证",
+                  T.multiRound,
                   h("span", { id: "dc-moa-multi-tip", className: "dc-moa-debate-tooltip", role: "tooltip" },
-                    "专家每轮并行分析；下一轮基于上一轮观点交叉质疑与修正，形成高共识后可提前结束（最多 5 轮）"
+                    T.multiRoundTip
                   )
                 )
               )
@@ -4345,7 +4660,7 @@
                   moa.orchestrator
                     ? h("button", {
                         className: "dc-moa-core-remove",
-                        title: "移除指挥模型",
+                        title: T.removeConductor,
                         onClick: function (e) { e.stopPropagation(); handleOrchRemove(); }
                       }, "×")
                     : null
@@ -4385,7 +4700,7 @@
                       m
                         ? h("button", {
                             className: "dc-moa-expert-remove",
-                            title: "移除该专家",
+                            title: T.removeExpert,
                             onClick: function (e) { e.stopPropagation(); removeExpert(i); }
                           }, "×")
                         : null
@@ -4397,11 +4712,11 @@
                 }),
                 // 末尾「+ 添加专家」席位
                 h("div", { key: "add-exp", className: "dc-moa-expert-slot dc-moa-expert-add" },
-                  h("span", { className: "dc-moa-expert-label" }, "添加"),
+                  h("span", { className: "dc-moa-expert-label" }, T.provAdd),
                   h("div", {
                     className: "dc-moa-expert-circle dc-moa-expert-add-circle",
                     onClick: addExpert,
-                    title: "添加一个专家席位"
+                    title: T.addExpertTip
                   },
                     h("span", { className: "dc-moa-expert-empty" }, "+")
                   )
@@ -4438,11 +4753,11 @@
                       h("span", { className: "dc-moa-detail-name" }, selModel.name)
                     ),
                     h("div", { className: "dc-moa-detail-provider" },
-                      (selModel.providerName || selModel.provider || "").toUpperCase() + " · " + (selModel.context ? formatCtx(selModel.context) : "上下文未知")
+                      (selModel.providerName || selModel.provider || "").toUpperCase() + " · " + (selModel.context ? formatCtx(selModel.context) : T.contextUnknown)
                     )
                   )
                 ),
-                h("p", { className: "dc-moa-detail-desc" }, "模型 ID：" + selModel.id),
+                h("p", { className: "dc-moa-detail-desc" }, T.modelIdColon + selModel.id),
                 // ── 辩论角色编辑（仅专家席位；P2 差异化视角注入）──
                 (function () {
                   if (!moa || !moa.experts) return null;
@@ -4461,11 +4776,11 @@
                     saveOrchestratorState(moa.orchestrator, exps);
                   }
                   return h("div", { className: "dc-moa-role-edit" },
-                    h("label", { className: "dc-moa-role-lbl" }, "辩论角色（差异化视角）"),
+                    h("label", { className: "dc-moa-role-lbl" }, T.debateRoleLabel),
                     h("input", {
                       className: "dc-moa-role-input",
                       type: "text",
-                      placeholder: "如：逻辑主审 / 事实核查 / 创意发散",
+                      placeholder: T.debateRolePh,
                       value: (moa.experts[idx].role) || "",
                       onChange: function (ev) { updRole(ev.target.value); }
                     })
@@ -4505,7 +4820,7 @@
                     h("span", { className: "dc-moa-bar-val" }, fmtTok((window.__moa_sel_usage || {}).output_tokens))
                   ),
                   h("div", { className: "dc-moa-bar-row" },
-                    h("span", { className: "dc-moa-bar-lbl" }, "会话数"),
+                    h("span", { className: "dc-moa-bar-lbl" }, T.sessionCountLbl),
                     h("div", { className: "dc-moa-bar-track" },
                       h("div", {
                         className: "dc-moa-bar-fill dc-moa-bar-session",
@@ -4517,7 +4832,7 @@
                   ),
                   // ── MoA 专属统计：该模型作为智囊团成员产生的会话和 Token ──
                   h("div", { className: "dc-moa-bar-row" },
-                    h("span", { className: "dc-moa-bar-lbl dc-moa-bar-lbl-moa" }, "MoA 会话"),
+                    h("span", { className: "dc-moa-bar-lbl dc-moa-bar-lbl-moa" }, T.moaSessions),
                     h("div", { className: "dc-moa-bar-track" },
                       h("div", {
                         className: "dc-moa-bar-fill dc-moa-bar-moa-session",
@@ -4540,7 +4855,7 @@
                   ),
                   // ── 新增：总 TOKEN（输入+输出合计）──
                   h("div", { className: "dc-moa-bar-row" },
-                    h("span", { className: "dc-moa-bar-lbl" }, "总 Token"),
+                    h("span", { className: "dc-moa-bar-lbl" }, T.totalTokenLbl),
                     h("div", { className: "dc-moa-bar-track" },
                       h("div", {
                         className: "dc-moa-bar-fill dc-moa-bar-total",
@@ -4554,9 +4869,9 @@
                   ),
                   // ── 新增：平均每会话 Token ──
                   h("div", { className: "dc-moa-bar-row" },
-                    h("span", { className: "dc-moa-bar-lbl" }, "平均/会话"),
+                    h("span", { className: "dc-moa-bar-lbl" }, T.avgPerSession),
                     h("div", { className: "dc-moa-bar-track dc-moa-bar-track-avg",
-                      title: "该模型每次会话平均消耗的 Token 数"
+                      title: T.avgTokenTip
                     },
                       h("div", {
                         className: "dc-moa-bar-fill dc-moa-bar-avg",
@@ -4579,27 +4894,27 @@
                   ),
                   // ── 新增：最近活跃（从 MoA 会话记录推算）──
                   h("div", { className: "dc-moa-bar-row dc-moa-bar-row-last" },
-                    h("span", { className: "dc-moa-bar-lbl" }, "最近活跃"),
+                    h("span", { className: "dc-moa-bar-lbl" }, T.lastActive),
                     h("div", { className: "dc-moa-bar-val dc-moa-bar-val-wide", style: { flex: 1, textAlign: 'left', paddingLeft: '.4rem' } },
                       (function() {
                         var u = window.__moa_sel_usage;
-                        if (!u || !u.session_count || u.session_count <= 0) return "暂无使用记录";
+                        if (!u || !u.session_count || u.session_count <= 0) return T.noUsageRecord;
                         if (u.last_used_at) {
                           try {
                             var d = new Date(u.last_used_at);
                             var ago = Date.now() - d.getTime();
-                            if (ago < 60000) return "刚刚";
-                            if (ago < 3600000) return Math.floor(ago / 60000) + " 分钟前";
-                            if (ago < 86400000) return Math.floor(ago / 3600000) + " 小时前";
-                            return Math.floor(ago / 86400000) + " 天前";
+                            if (ago < 60000) return T.justNow;
+                            if (ago < 3600000) return Math.floor(ago / 60000) + T.minAgo;
+                            if (ago < 86400000) return Math.floor(ago / 3600000) + T.hourAgo;
+                            return Math.floor(ago / 86400000) + T.dayAgo;
                           } catch(e) { return String(u.last_used_at); }
                         }
-                        return "有 " + u.session_count + " 次会话";
+                        return T.haveSessionsPre + u.session_count + T.haveSessionsSuf;
                       })()
                     )
                   )
                 ),
-                h("div", { className: "dc-moa-detail-footer" }, "MIXTURE OF AGENTS · Token 用量统计")
+                h("div", { className: "dc-moa-detail-footer" }, T.moaTokenStatsFooter)
               )
             : renderSummaryPanel(),
 
@@ -4607,12 +4922,12 @@
           h("div", { className: "dc-moa-copy-panel" },
             h("div", { className: "dc-moa-copy-header" },
               h("div", { className: "dc-moa-copy-header-left" },
-                h("span", null, "智囊团对话"),
+                h("span", null, T.moaChatTitle),
                 h("div", { className: "dc-moa-copy-select-wrap" },
                   h("select", {
                     className: "dc-moa-copy-select",
                     value: activePreset,
-                    title: "切换组合方案（与上方「组合方案」同一设置）",
+                    title: T.switchPresetTip,
                     onChange: function (e) { switchPreset(e.target.value); }
                   },
                     getPresetNames().map(function (name) {
@@ -4629,15 +4944,15 @@
                         ? ("#tk=" + encodeURIComponent(window.__HERMES_SESSION_TOKEN__)) : ""),
                   target: "_blank",
                   rel: "noopener noreferrer",
-                  title: "在新窗口打开对话页面",
+                  title: T.openNewWindowTip,
                   style: { textDecoration: "none" }
-                }, "⛶ 新窗口"),
+                }, T.newWindowBtn),
                 h("button", {
                   className: cn("dc-btn dc-btn-sm", applyState.applied && "dc-btn-success", applyState.applying && "dc-btn-loading"),
                   onClick: applyToHermes,
                   disabled: applyState.applying,
-                  title: "将圆桌配置持久化到 Hermes（自动同步复制 YAML 到剪贴板）"
-                }, applyState.applied ? "已应用 + 已复制 ✓" : (applyState.applying ? "应用中…" : "应用到 Hermes"))
+                  title: T.applyHermesTip
+                }, applyState.applied ? T.appliedCopied : (applyState.applying ? T.applyingState : T.applyToHermesBtn))
               )
             ),
             applyState.error ? h("div", { className: "dc-moa-apply-err" }, applyState.error) : null,
@@ -4694,13 +5009,13 @@
         attempt = attempt || 0;
         if (!result) return Promise.resolve(result);
         if (result.refresh_status === "error") {
-          return Promise.reject(new Error(result.refresh_error || "模型刷新失败"));
+          return Promise.reject(new Error(result.refresh_error || T.modelRefreshFailed));
         }
         if (!result.refreshing && result.refresh_status !== "refreshing") {
           return Promise.resolve(result);
         }
         if (attempt >= 60) {
-          return Promise.reject(new Error("模型刷新后台任务超时"));
+          return Promise.reject(new Error(T.modelRefreshTimeout));
         }
         var generation = result.refresh_generation;
         return new Promise(function (resolve) { setTimeout(resolve, 2000); })
@@ -4732,7 +5047,7 @@
           .then(function (u) { return waitForUniverseRefresh(u, 0); })
           .then(function (u) {
             if (!u || u.refresh_status === "error") {
-              throw new Error((u && u.refresh_error) || "模型刷新失败");
+              throw new Error((u && u.refresh_error) || T.modelRefreshFailed);
             }
             return syncMoaCache(true).then(function () { return u; });
           });
@@ -5040,7 +5355,7 @@
           // fast /providers payload so the tab is instant even on first paint.
           content = (providerState.providers && providerState.providers.length)
             ? h(ProviderManagementSection, { provRows: provRowsForMgmt, disabledSet: disabledSet, configuredSet: configuredSet, keyedSet: keyedSet, onChanged: d.reloadAll })
-            : h(Loader, { text: "提供商清单加载中…" });
+            : h(Loader, { text: T.loadingProviders });
           break;
         case "moa":
           content = h(MoASection, { universeRev: d.universeRev });
