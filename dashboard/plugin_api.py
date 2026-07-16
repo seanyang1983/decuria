@@ -2229,4 +2229,3 @@ def set_proxy_config(body: _ProxyPerProviderBody):
         data = {"proxy_url": proxy_url, "enabled_providers": enabled}
         _write_proxy(data)
         return {**data, "applied_routes": changed}
-

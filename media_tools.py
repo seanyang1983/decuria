@@ -70,14 +70,14 @@ def _atomic_write_bytes(dest: Path, data: bytes) -> None:
 
 def _hermes_cache_dir(kind: str = "videos") -> Optional[Path]:
     """返回 Hermes 白名单缓存目录（用于媒体投递）。
-    
+
     网关的 validate_media_delivery_path 只允许从以下路径投递附件：
       - _HERMES_HOME/cache/{videos,images,audio,...}  （复数，与 _MEDIA_DELIVERY_CACHE_SUBDIRS 一致）
       - _HERMES_ROOT/profiles/<name>/cache/{videos,images,...}
-    
+
     插件自己的 generated/ 目录不在白名单里，直接返回会导致
     「Skipping unsafe MEDIA directive path」。
-    
+
     kind 映射：video→videos, image→images, audio→audio（保持复数）。
     """
     hermes_root = hermes_home()
@@ -103,7 +103,7 @@ def _hermes_cache_dir(kind: str = "videos") -> Optional[Path]:
 
 def _copy_for_delivery(src: str, kind: str) -> Optional[str]:
     """把生成的文件复制到 Hermes 缓存目录以便网关投递。
-    
+
     返回缓存中的新路径（用于 MEDIA: 标签），失败则返回 None（仍可用原始路径做本地展示）。
     """
     src_p = Path(src)

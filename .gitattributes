@@ -17,3 +17,9 @@
 # Binaries.
 *.png     binary
 *.mp4     binary
+
+# Vendored third-party dashboard assets (minified Preact runtime + provider SVG
+# icons). Skip whitespace checks so upstream files aren't reformatted line by
+# line; git diff --check would otherwise flag their trailing whitespace.
+dashboard/assets/** -whitespace
+dashboard/dist/**   -whitespace
