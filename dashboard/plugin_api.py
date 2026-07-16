@@ -660,6 +660,60 @@ def _invalidate_universe() -> None:
         logger.debug("failed to create stale marker", exc_info=True)
 
 
+def _remove_provider_from_universe(slug: str) -> None:
+    """Immediately drop ONE provider from the cached model universe so 模型管理
+    reflects a removal at once (through the frontend's post-change reloadAll),
+    instead of waiting for the slow full background rebuild."""
+    try:
+        u = _read_universe()
+        if not u or not isinstance(u.get("providers"), list):
+            return
+        kept = [p for p in u["providers"] if p.get("slug") != slug]
+        if len(kept) != len(u["providers"]):
+            u["providers"] = kept
+            u["built_at"] = int(time.time())
+            _write_universe(u)
+    except Exception:
+        logger.warning("failed to drop provider %s from universe", slug, exc_info=True)
+
+
+def _seed_provider_into_universe(slug: str, entry: dict) -> None:
+    """Immediately add/refresh ONE provider in the cached model universe so 模型
+    管理 shows a newly added provider at once (through the frontend's post-add
+    reloadAll). Probes ONLY this provider's own catalog — cheap compared with
+    the full all-provider rebuild (~45s cold)."""
+    try:
+        u = _read_universe()
+        if not u or not isinstance(u.get("providers"), list):
+            # No warm cache yet; the normal build path will include it.
+            return
+        models = []
+        try:
+            from hermes_cli.models import cached_provider_model_ids
+            models = cached_provider_model_ids(slug, force_refresh=True) or []
+        except Exception:
+            logger.warning("seed probe failed for new provider %s", slug, exc_info=True)
+            models = []
+        if not models:
+            # Fall back to the gateway's own disk cache if the live probe was empty.
+            models = list(_read_hermes_model_cache().get(slug, []))
+        name = (entry.get("name") if isinstance(entry, dict) else None) or slug
+        node = {
+            "slug": slug,
+            "name": name,
+            "models": models,
+            "authenticated": bool(_resolve_provider_key(entry)) if isinstance(entry, dict) else False,
+            "auth_type": None,
+            "key_env": entry.get("key_env") if isinstance(entry, dict) else None,
+            "keyed": True,
+        }
+        u["providers"] = [p for p in u["providers"] if p.get("slug") != slug] + [node]
+        u["built_at"] = int(time.time())
+        _write_universe(u)
+    except Exception:
+        logger.warning("failed to seed provider %s into universe", slug, exc_info=True)
+
+
 def _preserve_previous_models(prev: Dict[str, object], fresh: Dict[str, object]) -> None:
     """Hardening: a transient probe failure can make an *authenticated* provider
     report 0 models even though it had models before. If we blindly write the
@@ -1465,10 +1519,16 @@ def add_provider(body: ProviderAddBody):
     st = _read_provider_state()
     st["last_added"] = slug
     _write_provider_state(st["disabled"], last_added=slug)
-    _invalidate_universe()
 
     # New provider: hide ALL its models by default so they don't flood MoA bench.
     _hide_all_provider_models(slug)
+
+    # Immediately seed THIS provider (probing only its own catalog) into the
+    # cached universe so 模型管理 shows it at once via the frontend's post-add
+    # reloadAll, instead of waiting for the slow all-provider rebuild. The
+    # .stale marker still drives eventual consistency in the background.
+    _seed_provider_into_universe(slug, entry)
+    _invalidate_universe()
 
     return {"slug": slug, "provider": {
         "name": entry.get("name", "") or slug,
@@ -1493,6 +1553,11 @@ def remove_provider(slug: str):
     if st.get("last_added") == slug:
         st["last_added"] = None
         _write_provider_state(st["disabled"], last_added=None)
+    # Immediately drop the provider from the cached universe so 模型管理 stops
+    # showing it at once via the frontend's post-remove reloadAll, instead of
+    # waiting for the slow background rebuild. .stale still covers eventual
+    # consistency.
+    _remove_provider_from_universe(slug)
     _invalidate_universe()
     return {"slug": slug, "removed": True}
 
