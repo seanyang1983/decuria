@@ -452,7 +452,7 @@
     // English acts as the fallback base: any key missing from another locale falls back to EN.
     var I18N_EN = {
       heroKicker: "DECURIA · MODEL CHANNEL ROUTER",
-      heroTitle: "Two Heads Are Better Than One",
+      heroTitle: "A Council of Minds",
       heroSub: "Multi-model orchestration · many minds beat one",
       refresh: "Refresh",
       refreshing: "Refreshing…",
