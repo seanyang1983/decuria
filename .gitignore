@@ -44,6 +44,11 @@ docs/screenshots/*
 !docs/screenshots/model-management.png
 !docs/screenshots/provider-management.png
 !docs/screenshots/moa-roundtable.png
+!docs/screenshots/en/
+!docs/screenshots/en/channel-config.png
+!docs/screenshots/en/model-management.png
+!docs/screenshots/en/provider-management.png
+!docs/screenshots/en/moa-roundtable.png
 decuria_debug.png
 decuria_moa_debug.png
 

@@ -38,7 +38,7 @@ Decuria folds these pain points into four pages: **configure once, see clearly, 
 
 ### 1. Council — let models cover each other, not just one answer
 
-![MoA round table](docs/screenshots/moa-roundtable.png)
+![MoA round table](docs/screenshots/en/moa-roundtable.png)
 
 The Council builds on **Hermes Agent v0.18.2's native Mixture-of-Agents (MoA)** capability, turning collaboration that used to be driven only by config files into a **drag-and-drop, fully visual expert round table**.
 
@@ -66,19 +66,19 @@ On top of native MoA, Decuria adds a full visual and orchestration experience:
 
 ### 2. Channel routing — the right model for every entry point
 
-![Channel routing](docs/screenshots/channel-config.png)
+![Channel routing](docs/screenshots/en/channel-config.png)
 
 Configure the global default model, each messaging channel, and image / vision / video fallback models — all on one page. Model, provider and key cascade together and save in one batch. No more hand-editing config files and restarting one by one.
 
 ### 3. Model management — only the models you actually need
 
-![Model management](docs/screenshots/model-management.png)
+![Model management](docs/screenshots/en/model-management.png)
 
 Models are grouped by provider, searchable, and filterable to free-only. A new provider's models are **all OFF by default** — you turn on only what you use; models discovered by a later refresh also stay OFF by default, so the list never floods.
 
 ### 4. Provider management — compatible endpoints with a full management experience
 
-![Provider management](docs/screenshots/provider-management.png)
+![Provider management](docs/screenshots/en/provider-management.png)
 
 Add, edit, enable or disable any OpenAI-compatible provider, with custom base URLs, **multiple API keys per provider**, and a **per-provider proxy toggle**. API keys return an irreversible preview only — plaintext is never handed back.
 

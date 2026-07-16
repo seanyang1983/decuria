@@ -183,10 +183,10 @@
   <h2 data-i18n="shot.title">四个页面,一眼看懂</h2>
   <p class="sub" data-i18n="shot.sub">来自真实 Dashboard 的截图。</p>
   <div class="shots">
-    <figure class="shot"><img loading="lazy" src="screenshots/moa-roundtable.png" alt="智囊团圆桌 / MoA round table" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.1t">智囊团圆桌</b><span data-i18n="shot.1d">拖拽编排专家与指挥,单轮或多轮辩证。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/channel-config.png" alt="通道配置 / Channel routing" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.2t">通道配置</b><span data-i18n="shot.2d">全局、各渠道与多模态候补模型一次配置。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/model-management.png" alt="模型管理 / Model management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.3t">模型管理</b><span data-i18n="shot.3d">按 Provider 分组,新模型默认关闭。</span></figcaption></figure>
-    <figure class="shot"><img loading="lazy" src="screenshots/provider-management.png" alt="Provider 管理 / Provider management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.4t">Provider 管理</b><span data-i18n="shot.4d">兼容任意 OpenAI 接口,多 Key、按 Provider 代理。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/moa-roundtable.png" data-zh="screenshots/moa-roundtable.png" data-en="screenshots/en/moa-roundtable.png" alt="智囊团圆桌 / MoA round table" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.1t">智囊团圆桌</b><span data-i18n="shot.1d">拖拽编排专家与指挥,单轮或多轮辩证。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/channel-config.png" data-zh="screenshots/channel-config.png" data-en="screenshots/en/channel-config.png" alt="通道配置 / Channel routing" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.2t">通道配置</b><span data-i18n="shot.2d">全局、各渠道与多模态候补模型一次配置。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/model-management.png" data-zh="screenshots/model-management.png" data-en="screenshots/en/model-management.png" alt="模型管理 / Model management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.3t">模型管理</b><span data-i18n="shot.3d">按 Provider 分组,新模型默认关闭。</span></figcaption></figure>
+    <figure class="shot"><img loading="lazy" src="screenshots/provider-management.png" data-zh="screenshots/provider-management.png" data-en="screenshots/en/provider-management.png" alt="Provider 管理 / Provider management" onclick="openLb(this.src)"><figcaption><b data-i18n="shot.4t">Provider 管理</b><span data-i18n="shot.4d">兼容任意 OpenAI 接口,多 Key、按 Provider 代理。</span></figcaption></figure>
   </div>
 </div></section>
 
@@ -307,6 +307,10 @@
     var dict=lang==="en"?I18N.en:ZH;
     document.querySelectorAll("[data-i18n]").forEach(function(el){
       var k=el.getAttribute("data-i18n"); if(dict[k]!=null) el.textContent=dict[k];
+    });
+    document.querySelectorAll(".shot img[data-en]").forEach(function(im){
+      var s = lang==="en" ? im.getAttribute("data-en") : im.getAttribute("data-zh");
+      if(s && im.getAttribute("src") !== s) im.src = s;
     });
     document.documentElement.lang=lang==="en"?"en":"zh-CN";
     var b=document.getElementById("lang"); if(b) b.textContent=lang==="en"?"\u4E2D\u6587":"EN";
