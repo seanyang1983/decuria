@@ -1,0 +1,11 @@
+name: decuria
+version: "0.2.0"
+description: Decuria - 智囊团 (Mixture of Agents) 插件，支持多模型编排与用量追踪
+author: Decuria Team
+kind: standalone
+provides_tools:
+  - decuria_image_generate
+  - decuria_video_generate
+  - decuria_media_generate
+provides_hooks:
+  - pre_gateway_dispatch

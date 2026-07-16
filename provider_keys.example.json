@@ -1,0 +1,8 @@
+{
+  "example-provider": [
+    {
+      "label": "备用密钥",
+      "key_env": "EXAMPLE_PROVIDER_API_KEY"
+    }
+  ]
+}

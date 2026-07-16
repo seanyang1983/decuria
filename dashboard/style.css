@@ -1,0 +1,2361 @@
+/* Decuria dashboard — Omnilimb-matched design system.
+ * Mirrors ex-* visual language: gradient hero, stat cards, accent-driven
+ * cards with hover glow, pill tabs, toggle switches, theme-var based.
+ * Prefix: .dc- (avoids collision with omnilimb's .ex-* on same page).
+ */
+.dc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  --dc-accent: var(--color-primary, #67e8f9);
+  --dc-accent-2: var(--color-ring, var(--color-primary, #c084fc));
+}
+
+/* ---- Hero -------------------------------------------------------------- */
+.dc-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.35rem 1.4rem;
+  background:
+    radial-gradient(circle at 12% 0, color-mix(in srgb, var(--dc-accent) 16%, transparent), transparent 32%),
+    linear-gradient(135deg, color-mix(in srgb, var(--color-card) 88%, transparent), color-mix(in srgb, var(--dc-accent-2) 10%, transparent));
+}
+.dc-hero::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% -80% -10%;
+  height: 180%;
+  pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--dc-accent-2) 12%, transparent), transparent 55%);
+}
+.dc-hero-text { position: relative; z-index: 1; min-width: 0; flex: 1; }
+.dc-kicker {
+  color: var(--color-muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: .7rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.dc-hero h1 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+}
+.dc-hero p {
+  max-width: none;
+  margin: .6rem 0 0;
+  color: var(--color-muted-foreground);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+.dc-hero-actions { position: relative; z-index: 1; display: flex; gap: .5rem; align-items: center; white-space: nowrap; }
+
+/* ---- Stat cards (2x2 compact grid, displayed in hero section on the right) --- */
+.dc-stats { display: grid; grid-template-columns: repeat(2, minmax(160px, 1fr)); gap: .6rem; }
+.dc-stats.dc-stats-4 { grid-template-columns: repeat(4, minmax(140px, 1fr)); }
+.dc-stat {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: .7rem 1rem;
+  background: color-mix(in srgb, var(--color-card) 90%, #000);
+  min-width: 160px;
+}
+.dc-stat-label { color: var(--color-muted-foreground); font-size: .62rem; text-transform: uppercase; letter-spacing: .12em; font-family: var(--font-mono, ui-monospace, monospace); }
+.dc-stat-value { font-size: 1.25rem; font-weight: 760; letter-spacing: -0.03em; line-height: 1; }
+.dc-stat-hint { color: var(--color-muted-foreground); font-size: .78rem; vertical-align: middle; }
+
+/* ---- Pill tabs -------------------------------------------------------- */
+.dc-tabs { display: flex; gap: .4rem; flex-wrap: wrap; }
+.dc-tabs button {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 72%, transparent);
+  color: var(--color-muted-foreground);
+  padding: .42rem .8rem;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: color .14s, border-color .14s, background .14s;
+}
+.dc-tabs button:hover { color: var(--color-foreground); }
+.dc-tabs button.active {
+  color: var(--color-foreground);
+  border-color: color-mix(in srgb, var(--dc-accent) 60%, var(--color-border));
+  background: color-mix(in srgb, var(--dc-accent) 14%, var(--color-card));
+}
+
+/* ---- Controls --------------------------------------------------------- */
+.dc-page input, .dc-page select, .dc-page textarea {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 60%, transparent);
+  color: var(--color-foreground);
+  padding: .45rem .6rem;
+  font-size: .85rem;
+  outline: none;
+}
+.dc-page input:focus, .dc-page select:focus, .dc-page textarea:focus {
+  border-color: color-mix(in srgb, var(--dc-accent) 60%, var(--color-border));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--dc-accent) 18%, transparent);
+}
+.dc-btn {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 72%, transparent);
+  color: var(--color-foreground);
+  padding: .45rem .85rem;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: border-color .14s, background .14s, opacity .14s;
+}
+.dc-btn:hover:not(:disabled) { border-color: color-mix(in srgb, var(--dc-accent) 55%, var(--color-border)); background: color-mix(in srgb, var(--dc-accent) 12%, var(--color-card)); }
+.dc-btn:disabled { opacity: .5; cursor: not-allowed; }
+/* .dc-btn-primary 统一定义在聊天模块区域（line ~1702），使用暗调主题风格 */
+.dc-controls { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+
+/* ---- Section + card --------------------------------------------------- */
+.dc-section {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  background: color-mix(in srgb, var(--color-card) 82%, transparent);
+}
+.dc-section-title { margin: 0 0 .7rem; font-size: .95rem; font-weight: 700; letter-spacing: -0.01em; }
+
+/* ---- Accent card (per-channel) ---------------------------------------- */
+.dc-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--dc-accent) 30%, var(--color-border));
+  border-radius: 12px;
+  padding: .9rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  background:
+    radial-gradient(circle at 2rem 1.6rem, color-mix(in srgb, var(--dc-accent) 13%, transparent), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent),
+    color-mix(in srgb, var(--color-card) 92%, #000);
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.dc-card:hover { border-color: var(--dc-accent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--dc-accent) 16%, transparent), 0 8px 24px rgba(0,0,0,.25); }
+.dc-card-head { display: flex; align-items: center; gap: .6rem; min-width: 0; }
+.dc-card-icon {
+  width: 2rem; height: 2rem; border-radius: 7px; flex: 0 0 auto;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--dc-accent) 16%, transparent);
+  color: var(--dc-accent); font-weight: 800; font-size: .95rem;
+}
+.dc-card-title { font-weight: 720; line-height: 1.1; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dc-card-sub { color: var(--color-muted-foreground); font-size: .74rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dc-card-desc { color: var(--color-muted-foreground); font-size: .82rem; line-height: 1.45; }
+.dc-card-foot { margin-top: auto; display: flex; align-items: center; gap: .5rem; }
+
+/* Badges */
+.dc-badges { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; }
+.dc-badge {
+  border: 1px solid var(--color-border); border-radius: 6px;
+  padding: .12rem .4rem; font-size: .68rem;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace); letter-spacing: .02em;
+}
+.dc-badge-accent { border-color: color-mix(in srgb, var(--dc-accent) 55%, var(--color-border)); color: var(--dc-accent); background: color-mix(in srgb, var(--dc-accent) 10%, transparent); }
+.dc-badge-ok { border-color: #34d39988; color: #34d399; background: rgba(52,211,153,.08); }
+.dc-badge-warn { border-color: #fbbf2488; color: #fbbf24; background: rgba(251,191,36,.08); }
+.dc-badge-muted { border-color: color-mix(in srgb, var(--color-muted-foreground) 40%, var(--color-border)); color: var(--color-muted-foreground); background: color-mix(in srgb, var(--color-muted-foreground) 8%, transparent); }
+
+/* Meta text */
+.dc-meta { color: var(--color-muted-foreground); font-size: .74rem; font-family: var(--font-mono, ui-monospace, monospace); }
+.dc-spacer { margin-left: auto; }
+
+/* Status colors */
+.dc-ok { color: #34d399; }
+.dc-warn { color: #fbbf24; }
+.dc-bad { color: #f87171; }
+
+/* ---- Toggle switch (Omnilimb-matched) -------------------------------- */
+.dc-switch { position: relative; display: inline-block; width: 2.25rem; height: 1.25rem; flex: 0 0 auto; cursor: pointer; }
+.dc-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.dc-switch-track {
+  position: absolute; inset: 0; border-radius: 0;
+  background: var(--background-base, var(--color-card));
+  border: 1px solid color-mix(in srgb, var(--midground-base, var(--color-foreground)) 20%, transparent);
+  transition: background .15s, border-color .15s;
+}
+.dc-switch-track::before {
+  content: ""; position: absolute;
+  height: .875rem; width: .875rem; left: 0; top: 50%;
+  transform: translate(.125rem, -50%); border-radius: 0;
+  background: color-mix(in srgb, var(--midground-base, var(--color-foreground)) 40%, transparent);
+  transition: transform .15s, background .15s;
+}
+.dc-switch input:checked + .dc-switch-track {
+  background: color-mix(in srgb, var(--midground-base, var(--color-foreground)) 15%, transparent);
+  border-color: color-mix(in srgb, var(--midground-base, var(--color-foreground)) 30%, transparent);
+}
+.dc-switch input:checked + .dc-switch-track::before { transform: translate(1rem, -50%); background: var(--midground-base, var(--color-foreground)); }
+
+/* ---- Form layout (label + control) ------------------------------------ */
+.dc-set-form { display: grid; grid-template-columns: 11rem minmax(0, 1fr); column-gap: .9rem; row-gap: .15rem; max-width: 44rem; align-items: center; }
+.dc-set-label { min-width: 11rem; font-size: .85rem; color: var(--color-muted-foreground); }
+.dc-set-control { display: flex; align-items: center; gap: .5rem; min-width: 0; padding: .35rem 0; }
+.dc-set-control > select { flex: 1; min-width: 0; }
+.dc-set-hint { grid-column: 2; color: var(--color-muted-foreground); font-size: .76rem; line-height: 1.5; margin: -.05rem 0 .5rem; }
+.dc-save-row { grid-column: 1 / -1; display: flex; gap: .6rem; align-items: center; margin-top: .5rem; }
+
+/* ---- Banners ---------------------------------------------------------- */
+.dc-banner { border-radius: 8px; padding: .65rem .85rem; font-size: .82rem; line-height: 1.5; }
+.dc-banner-warn { background: color-mix(in srgb, #f59e0b 12%, transparent); border: 1px solid color-mix(in srgb, #f59e0b 35%, transparent); color: #d97706; }
+.dc-banner-info { background: color-mix(in srgb, #3b82f6 10%, transparent); border: 1px solid color-mix(in srgb, #3b82f6 30%, transparent); color: #2563eb; }
+.dc-banner-ok { background: color-mix(in srgb, #22c55e 10%, transparent); border: 1px solid color-mix(in srgb, #22c55e 30%, transparent); color: #16a34a; }
+.dc-banner-error { background: color-mix(in srgb, #ef4444 10%, transparent); border: 1px solid color-mix(in srgb, #ef4444 30%, transparent); color: #dc2626; }
+
+/* ---- Footer sticky banner --------------------------------------------- */
+.dc-footer { position: static; }
+
+/* ---- Visibility list -------------------------------------------------- */
+.dc-vis-list { display: flex; flex-direction: column; gap: .25rem; max-height: 28rem; overflow-y: auto; padding: .2rem 0; }
+.dc-vis-row {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .4rem .5rem; border-radius: 8px;
+  font-size: .84rem; transition: background .12s;
+}
+.dc-vis-row:hover { background: color-mix(in srgb, var(--color-foreground) 6%, transparent); }
+.dc-vis-name { flex: 1; font-family: var(--font-mono, ui-monospace, monospace); font-size: .82rem; letter-spacing: -0.01em; }
+.dc-vis-search-row { display: flex; align-items: stretch; gap: .4rem; margin-bottom: .2rem; }
+.dc-vis-search {
+  flex: 0 0 33%; min-width: 0; height: 36px; border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-card) 50%, transparent);
+  color: var(--color-foreground);
+  padding: 0 .7rem; font-size: .85rem; outline: none;
+  box-sizing: border-box;
+}
+.dc-vis-search:focus {
+  border-color: color-mix(in srgb, var(--dc-accent) 55%, var(--color-border));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--dc-accent) 16%, transparent);
+}
+.dc-vis-search-row .dc-vis-search-btn {
+  flex: 0 0 auto; height: 36px; padding: 0 .85rem;
+  display: grid; place-items: center; font-size: .82rem; line-height: 1;
+  border: 1px solid var(--color-muted-foreground);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 60%, transparent);
+  cursor: pointer;
+}
+.dc-vis-search-row .dc-vis-search-btn:hover { border-color: var(--dc-accent); }
+/* 刷新按钮：固定宽度防止文字切换时布局跳动，风格与搜索/清除按钮统一 */
+.dc-vis-search-row .dc-vis-refresh-btn {
+  margin-left: auto;
+  flex: 0 0 auto;
+  min-width: 48px;
+  height: 36px;
+  padding: 0 .85rem;
+  display: grid;
+  place-items: center;
+  font-size: .82rem;
+  line-height: 1;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 60%, transparent);
+  color: var(--color-muted-foreground);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color .14s, background .14s;
+}
+.dc-vis-search-row .dc-vis-refresh-btn:hover {
+  border-color: var(--dc-accent);
+  background: color-mix(in srgb, var(--color-card) 80%, transparent);
+}
+.dc-vis-refresh-btn:disabled { opacity: .6; cursor: default; }
+/* 刷新按钮旋转动画 */
+.dc-vis-refresh-spinning { border-color: var(--dc-accent); color: var(--dc-accent); }
+.dc-vis-refresh-spinner {
+  display: inline-block;
+  animation: dc-spin 0.8s linear infinite;
+  font-size: 1.1em;
+}
+@keyframes dc-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* 刷新结果反馈 */
+.dc-vis-refresh-ok { border-color: #22c55e; color: #22c55e; }
+.dc-vis-refresh-err { border-color: #ef4444; color: #ef4444; }
+.dc-vis-count { font-size: .78rem; color: var(--color-muted-foreground); font-family: var(--font-mono, ui-monospace, monospace); }
+
+/* ---- Grid layouts ----------------------------------------------------- */
+.dc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .8rem; }
+
+/* Empty state */
+.dc-empty { color: var(--color-muted-foreground); font-size: .85rem; padding: .4rem 0; }
+
+/* ---- Channel inline edit row ------------------------------------------ */
+.dc-ch-row { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.dc-ch-row > label { min-width: 4rem; font-size: .82rem; color: var(--color-muted-foreground); }
+.dc-ch-row > select { flex: 1; min-width: 140px; }
+
+/* ---- Progress bar ----------------------------------------------------- */
+.dc-track { flex: 1; height: .45rem; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--dc-accent) 34%, var(--color-border)); background: rgba(0,0,0,.22); overflow: hidden; }
+.dc-fill { height: 100%; background: linear-gradient(90deg, var(--dc-accent), color-mix(in srgb, var(--dc-accent) 48%, white)); }
+
+/* ---- Horizontal bars (global default + channel rows) ----------------- */
+.dc-rows { display: flex; flex-direction: column; gap: .55rem; }
+.dc-rows-label {
+  margin: .25rem 0 .1rem;
+  font-size: .7rem; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+.dc-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  padding: .7rem .9rem;
+  background:
+    radial-gradient(circle at 1.4rem 1.1rem, color-mix(in srgb, var(--dc-accent) 10%, transparent), transparent 38%),
+    color-mix(in srgb, var(--color-card) 84%, transparent);
+  transition: border-color .16s ease, transform .16s ease, box-shadow .16s ease;
+}
+.dc-bar:hover { border-color: color-mix(in srgb, var(--dc-accent) 45%, var(--color-border)); }
+.dc-bar-global {
+  border-color: color-mix(in srgb, var(--dc-accent) 40%, var(--color-border));
+  background:
+    radial-gradient(circle at 1.4rem 1.1rem, color-mix(in srgb, var(--dc-accent) 16%, transparent), transparent 40%),
+    linear-gradient(135deg, color-mix(in srgb, var(--color-card) 90%, transparent), color-mix(in srgb, var(--dc-accent) 8%, transparent));
+}
+.dc-bar-id { display: flex; align-items: center; gap: .6rem; min-width: 0; flex: 0 0 auto; }
+.dc-bar-icon {
+  width: 2.1rem; height: 2.1rem; border-radius: 8px; flex: 0 0 auto;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--dc-accent) 16%, transparent);
+  color: var(--dc-accent); font-size: 1rem;
+}
+.dc-bar-name { font-weight: 720; letter-spacing: -0.02em; line-height: 1.15; }
+.dc-bar-sub { color: var(--color-muted-foreground); font-size: .72rem; }
+.dc-bar-controls { display: flex; align-items: center; gap: .5rem; flex: 1; min-width: 0; justify-content: flex-end; flex-wrap: wrap; }
+.dc-bar-controls > select { flex: 1 1 160px; min-width: 140px; max-width: 300px; }
+.dc-bar-controls > .dc-btn { flex: 0 0 auto; }
+/* 4-column variant for when we have provider count too */
+.dc-stats-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* ---- Visibility: provider-grouped collapsible (screenshot style) --------- */
+.dc-vis-groups { display: flex; flex-direction: column; gap: .35rem; margin-top: .55rem; }
+
+.dc-vis-group {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-card) 72%, transparent);
+}
+
+.dc-vis-group-header {
+  display: flex; align-items: center; gap: .6rem;
+  width: 100%; border: none; background: none;
+  padding: .65rem .8rem; cursor: pointer;
+  font-size: .9rem; font-weight: 700; letter-spacing: -0.01em;
+  color: var(--color-foreground);
+  transition: background .12s;
+}
+.dc-vis-group-header:hover { background: color-mix(in srgb, var(--color-foreground) 5%, transparent); }
+
+/* Chevron arrow */
+.dc-chevron {
+  display: inline-block; font-size: 1.05rem; line-height: 1;
+  transition: transform .2s ease; color: var(--color-muted-foreground);
+  transform: rotate(90deg); /* point right when closed */
+}
+.dc-chevron.open { transform: rotate(90deg) scaleY(-1); /* point down */ }
+
+.dc-vis-group-icon { font-size: 1rem; }
+.dc-vis-group-name { flex: 1; text-align: left; }
+.dc-vis-group-count {
+  font-size: .74rem; color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace); letter-spacing: .02em;
+}
+.dc-vis-free-btn {
+  margin-left: .4rem;
+  color: var(--dc-accent);
+  border-color: var(--color-border);
+  font-size: .8rem;
+}
+.dc-vis-group-badge {
+  font-size: .6rem;
+  font-weight: 600;
+  padding: .1rem .35rem;
+  border-radius: 4px;
+  margin-left: .25rem;
+}
+
+/* Expanded model list inside a group */
+.dc-vis-group-body {
+  border-top: 1px solid var(--color-border);
+  max-height: 24rem; overflow-y: auto;
+  background: rgba(0,0,0,.06);
+}
+
+.dc-vis-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .48rem .85rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  font-size: .86rem; transition: background .1s;
+}
+.dc-vis-item:last-child { border-bottom: none; }
+.dc-vis-item:hover { background: color-mix(in srgb, var(--color-foreground) 4%, transparent); }
+.dc-vis-item-name {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  letter-spacing: -0.005em; font-size: .84rem;
+}
+
+/* ---- Button variants --------------------------------------------------- */
+.dc-btn-sm { padding: .28rem .6rem; font-size: .76rem; border-radius: 6px; }
+.dc-btn-xs { padding: .18rem .45rem; font-size: .68rem; border-radius: 5px; }
+.dc-btn-disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+.dc-btn-ghost { border-color: transparent; background: transparent; }
+.dc-btn-danger {
+  border-color: color-mix(in srgb, #ef4444 40%, var(--color-border));
+  color: #f87171;
+  background: color-mix(in srgb, #ef4444 8%, transparent);
+}
+.dc-btn-danger:hover:not(:disabled) {
+  border-color: color-mix(in srgb, #ef4444 60%, var(--color-border));
+  background: color-mix(in srgb, #ef4444 16%, transparent);
+}
+/* 代理测试失败态 / 次要按钮 —— 此前 JS 引用但 CSS 未定义，回退成普通按钮，补全之 */
+.dc-btn-error {
+  border-color: color-mix(in srgb, #ef4444 50%, var(--color-border));
+  color: #f87171;
+  background: color-mix(in srgb, #ef4444 12%, transparent);
+}
+.dc-btn-secondary {
+  border-color: var(--color-border);
+  color: var(--color-muted-foreground);
+  background: color-mix(in srgb, var(--color-card) 50%, transparent);
+}
+/* 预设操作按钮（创建/取消/删除预设）—— 复用 .dc-btn 基础样式并统一尺寸 */
+.dc-moa-preset-btn {
+  padding: .3rem .65rem;
+  font-size: .78rem;
+  border-radius: 8px;
+}
+
+/* ---- Provider management ---------------------------------------------- */
+.dc-prov-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .55rem; }
+
+.dc-prov-row {
+  display: flex; align-items: center; gap: .65rem; flex-wrap: wrap;
+  border: 1px solid var(--color-border);
+  border-radius: 9px; padding: .6rem .8rem;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  transition: opacity .14s, border-color .14s ease;
+}
+.dc-prov-row:hover { border-color: color-mix(in srgb, var(--dc-accent) 45%, var(--color-border)); }
+.dc-prov-row.disabled { opacity: .45; }
+.dc-prov-row.disabled .dc-prov-row-name { text-decoration: line-through; }
+
+.dc-prov-row-icon {
+  width: 1.9rem; height: 1.9rem; border-radius: 7px; flex: 0 0 auto;
+  display: grid; place-items: center; font-size: .88rem;
+  background: color-mix(in srgb, var(--dc-accent) 14%, transparent);
+}
+/* Auth status shown via icon border color */
+.dc-prov-authed {
+  border: 1px solid #34d399;
+}
+.dc-prov-unauth {
+  border: 1px solid #fbbf24;
+}
+.dc-prov-row-info { flex: 1; min-width: 0; }
+.dc-prov-row-name { font-weight: 650; font-size: .85rem; letter-spacing: -0.01em; }
+.dc-prov-row-slug {
+  color: var(--color-muted-foreground); font-size: .72rem;
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+.dc-prov-row-actions { display: flex; gap: .35rem; flex: 0 0 auto; margin-left: auto; }
+.dc-prov-row-badges { display: flex; gap: .3rem; flex: 0 0 auto; align-items: center; margin-left: .15rem; }
+
+/* Provider auth legend (bottom of provider list) */
+.dc-prov-legend {
+  display: flex; gap: 1rem; justify-content: flex-end;
+  margin-top: .5rem; padding: .35rem 0 0;
+}
+.dc-prov-legend-item {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .72rem; color: var(--color-muted-foreground);
+}
+.dc-prov-legend-icon {
+  width: .85rem; height: .85rem; border-radius: 4px;
+  display: inline-block; border: 1px solid;
+}
+.dc-prov-legend-icon.dc-prov-authed { border-color: #34d399; }
+.dc-prov-legend-icon.dc-prov-unauth { border-color: #fbbf24; }
+
+/* Inline error text + error banner alias */
+.dc-inline-err { color: #f87171; font-size: .76rem; margin-left: .2rem; }
+.dc-banner-err { background: color-mix(in srgb, #ef4444 10%, transparent); border: 1px solid color-mix(in srgb, #ef4444 30%, transparent); color: #dc2626; }
+
+/* ---- Global save-all bar (config page bottom) ---- */
+.dc-config-wrapper { display: flex; flex-direction: column; gap: 0; }
+.dc-save-all-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .7rem;
+  margin-top: .8rem;
+  padding: .65rem .9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--dc-accent) 4%, transparent);
+}
+.dc-save-hint { font-size: .72rem; color: var(--color-muted-foreground); margin-right: auto; }
+.dc-save-note { font-size: .74rem; color: #34d399; font-weight: 500; }
+.dc-btn-lg { padding: .45rem 1.2rem; font-size: .85rem; font-weight: 600; }
+.dc-btn-loading { opacity: .65; cursor: wait; }
+.dc-btn-success { border-color: #34d399; color: #34d399; background: color-mix(in srgb, #34d399 12%, transparent); }
+
+/* ---- Brand provider icons (real SVG, force light for dark theme) ---- */
+/* 统一：所有品牌图标反转为亮色，适配深色/浅色主题 */
+.dc-prov-ico {
+  width: 1.15rem; height: 1.15rem;
+  display: block; flex: 0 0 auto;
+  /* 原始图标为单色深色 → 反转为亮色（白/浅灰），融入当前主题 */
+  filter: brightness(0) saturate(100%) invert(1);
+  opacity: .85;
+}
+.dc-vis-group-icon { display: inline-grid; place-items: center; font-size: 1rem; }
+.dc-vis-group-icon .dc-prov-ico { width: 1.2rem; height: 1.2rem; }
+.dc-prov-row-icon { display: inline-grid; place-items: center; }
+.dc-prov-row-icon .dc-prov-ico { width: 1.3rem; height: 1.3rem; }
+.dc-bar-icon .dc-prov-ico { width: 1.35rem; height: 1.35rem; }
+
+/* 供应商下拉：左侧带品牌图标预览 (removed icon, now plain select) */
+.dc-select-row {
+  display: inline-flex; align-items: center; gap: .4rem;
+  flex: 1 1 160px; min-width: 140px; max-width: 300px;
+}
+.dc-select-ico { display: inline-grid; place-items: center; width: 1.3rem; height: 1.3rem; flex: 0 0 auto; }
+.dc-select-row > select { flex: 1; min-width: 0; }
+
+/* ---- Key badge (shows which API key a provider uses) ------------------- */
+.dc-key-badge {
+  display: inline-flex; align-items: center; gap: .25rem;
+  font-size: .72rem; font-family: var(--font-mono, ui-monospace, monospace);
+  color: var(--color-muted-foreground);
+  background: color-mix(in srgb, var(--dc-accent) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--dc-accent) 25%, var(--color-border));
+  border-radius: 6px;
+  padding: .18rem .5rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  max-width: 180px;
+  flex: 0 1 auto;
+}
+.dc-key-select {
+  flex: 0 1 200px; min-width: 140px; max-width: 240px;
+  padding: .34rem .55rem; border-radius: 7px;
+  border: 1px solid var(--color-border); background: var(--color-background);
+  color: var(--color-foreground); font-size: .8rem;
+}
+.dc-keys-list-title { font-weight: 650; font-size: .85rem; margin: .2rem 0 .5rem; }
+.dc-keys-empty { color: var(--color-muted-foreground); font-size: .82rem; padding: .3rem 0 .6rem; }
+.dc-keys-list { display: flex; flex-direction: column; gap: .4rem; margin-bottom: .9rem; }
+.dc-key-item {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .45rem .6rem; border: 1px solid var(--color-border); border-radius: 8px;
+  background: color-mix(in srgb, var(--dc-accent) 5%, transparent);
+}
+.dc-key-item-main { flex: 1; min-width: 0; }
+.dc-key-item-label { font-weight: 600; font-size: .82rem; }
+.dc-key-item-sub {
+  font-size: .72rem; color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dc-keys-add { border-top: 1px dashed var(--color-border); padding-top: .8rem; }
+.dc-keys-add-title { font-weight: 650; font-size: .82rem; margin-bottom: .5rem; color: var(--dc-accent); }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .dc-stats-4 { grid-template-columns: repeat(2, 1fr); }
+  .dc-prov-list { grid-template-columns: 1fr; }
+  .dc-hero { flex-direction: column; align-items: stretch; }
+  .dc-hero h1 { font-size: 1.8rem; }
+  .dc-set-form { grid-template-columns: 1fr; }
+  .dc-set-label { min-width: 0; }
+  .dc-set-hint { grid-column: 1; }
+  .dc-save-row { grid-column: 1; }
+  .dc-bar { flex-direction: column; align-items: stretch; }
+  .dc-bar-controls { justify-content: stretch; }
+  .dc-bar-controls > select { max-width: none; }
+}
+@media (max-width: 520px) {
+  .dc-stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Loading shimmer skeleton */
+.dc-skel { position: relative; overflow: hidden; border-radius: 6px; background: color-mix(in srgb, var(--color-muted-foreground) 16%, transparent); }
+.dc-skel::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.12), transparent); animation: dc-shimmer 1.3s infinite; }
+@keyframes dc-shimmer { 100% { transform: translateX(100%); } }
+
+/* ---- Modal (添加提供商弹窗) -------------------------------------------- */
+.dc-modal-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; place-items: center; padding: 1rem;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(2px);
+  animation: dc-fade .14s ease;
+}
+@keyframes dc-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.dc-modal {
+  width: 100%; max-width: 30rem;
+  border: 1px solid color-mix(in srgb, var(--dc-accent) 45%, var(--color-border));
+  border-radius: 14px; overflow: hidden;
+  background: color-mix(in srgb, var(--color-card) 96%, #000);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+  display: flex; flex-direction: column;
+  animation: dc-pop .16s ease;
+}
+@keyframes dc-pop { from { transform: translateY(8px) scale(.98); opacity: .6; } to { transform: none; opacity: 1; } }
+
+.dc-modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem 1rem; border-bottom: 1px solid var(--color-border);
+  background: radial-gradient(circle at 1rem 0, color-mix(in srgb, var(--dc-accent) 14%, transparent), transparent 55%);
+}
+.dc-modal-title { font-size: .95rem; font-weight: 720; letter-spacing: -0.01em; }
+.dc-modal-close {
+  border: none; background: none; cursor: pointer;
+  color: var(--color-muted-foreground); font-size: 1.1rem; line-height: 1;
+  width: 1.8rem; height: 1.8rem; border-radius: 7px; transition: background .12s, color .12s;
+}
+.dc-modal-close:hover { background: color-mix(in srgb, var(--color-foreground) 8%, transparent); color: var(--color-foreground); }
+
+.dc-modal-body { padding: 1rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.dc-field { display: flex; flex-direction: column; gap: .3rem; }
+.dc-field-label { font-size: .76rem; color: var(--color-muted-foreground); }
+.dc-field > input { width: 100%; box-sizing: border-box; }
+.dc-url-hint {
+  display: block;
+  font-size: .7rem;
+  color: var(--color-muted-foreground);
+  opacity: .6;
+  margin-top: .15rem;
+  font-style: italic;
+}
+
+.dc-modal-footer {
+  display: flex; justify-content: flex-end; gap: .5rem;
+  padding: .8rem 1rem; border-top: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-card) 80%, transparent);
+}
+@media (max-width: 520px) {
+  .dc-modal { max-width: 100%; }
+}
+
+/* ---- Multi-key rows (添加/编辑提供商弹窗中的动态 Key 行) ---------- */
+.dc-key-row-group {
+  border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  border-radius: 8px;
+  padding: .55rem .7rem;
+  background: color-mix(in srgb, var(--color-muted-foreground) 4%, transparent);
+}
+.dc-key-row-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: .35rem;
+}
+.dc-key-row-idx {
+  font-size: .74rem; font-weight: 700;
+  color: var(--color-muted-foreground);
+  letter-spacing: .02em;
+}
+.dc-key-row-rm {
+  width: 1.5rem; height: 1.5rem; padding: 0; font-size: 1rem;
+  line-height: 1; display: grid; place-items: center;
+  border-radius: 5px; color: #ef4444; border-color: color-mix(in srgb, #ef4444 30%, var(--color-border));
+}
+.dc-key-row-rm:hover { background: color-mix(in srgb, #ef4444 12%, transparent); }
+.dc-key-row-fields {
+  display: flex; gap: .5rem; flex-wrap: wrap;
+  align-items: center;
+}
+.dc-key-input {
+  flex: 1; min-width: 0;
+  padding: .42rem .6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-size: .85rem;
+  outline: none;
+}
+.dc-key-input:focus {
+  border-color: var(--dc-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--dc-accent) 20%, transparent);
+}
+.dc-key-input-full {
+  width: 100%;
+}
+.dc-field-inline {
+  flex: 1 1 140px; min-width: 120px;
+}
+.dc-add-key-row-btn {
+  align-self: flex-start; margin-top: .2rem;
+  border-style: dashed; opacity: .8;
+}
+.dc-add-key-row-btn:hover { opacity: 1; border-style: solid; }
+
+/* Channel row: no scroll/swipe — let content flow naturally */
+.dc-bar-ch { overflow: visible !important; }
+
+/* ================================================================
+   MoA / 智囊团 styles
+   ================================================================ */
+
+/* MoA - New Design ------------------------------------------- */
+.dc-moa-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1rem;
+  align-items: stretch; /* 两列等高：无论左侧卡片多少，右侧同步拉伸对齐 */
+}
+
+/* ── 预设管理栏 (Preset Bar) ── */
+.dc-moa-preset-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .45rem .65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  margin-bottom: .4rem;
+}
+.dc-moa-preset-label {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--color-muted-foreground);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.dc-moa-preset-selector {
+  display: flex;
+  gap: .25rem;
+  flex: 1;
+}
+.dc-moa-preset-tab {
+  padding: .2rem .55rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-muted-foreground);
+  font-size: .72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.dc-moa-preset-tab:hover {
+  border-color: color-mix(in srgb, #eab308 50%, var(--color-border));
+  color: var(--color-foreground);
+}
+.dc-moa-preset-tab.active {
+  border-color: #eab308;
+  background: color-mix(in srgb, #eab308 12%, transparent);
+  color: var(--color-foreground);
+  box-shadow: 0 0 0 1px color-mix(in srgb, rgba(234,179,8,.2), transparent);
+}
+.dc-moa-preset-actions {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+.dc-moa-add-preset-row {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+}
+.dc-moa-preset-input {
+  padding: .2rem .45rem;
+  border: 1.5px solid var(--dc-accent, #eab308);
+  border-radius: 6px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-size: .72rem;
+  width: 120px;
+  outline: none;
+}
+.dc-moa-preset-input:focus {
+  box-shadow: 0 0 0 2px color-mix(in srgb, rgba(234,179,8,.25), transparent);
+}
+
+/* Preset action buttons: match the search input size */
+.dc-moa-preset-actions .dc-btn {
+  padding: .3rem .65rem;
+  font-size: .78rem;
+  border-radius: 8px;
+  min-width: 78px;
+}
+.dc-moa-preset-actions .dc-moa-preset-input {
+  padding: .3rem .55rem;
+  font-size: .78rem;
+  border-radius: 8px;
+}
+
+/* Search input — used inline in model bench header */
+.dc-moa-search {
+  flex: 0 1 auto;
+  width: 160px;
+  max-width: 160px;
+  padding: .3rem .55rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-background) 60%, transparent);
+  color: var(--color-foreground);
+  font-size: .78rem;
+  outline: none;
+}
+.dc-moa-search:focus {
+  border-color: color-mix(in srgb, var(--dc-accent) 60%, var(--color-border));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--dc-accent) 18%, transparent);
+}
+
+/* Main area: THE BENCH + CORE-ORCHESTRATOR — spans full width */
+.dc-moa-main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1rem;
+  min-height: 360px; /* 自然高度，不约束视口，避免压缩上方圆桌 */
+  grid-column: 1 / -1;
+  align-items: stretch; /* 底部两栏（row 3）等高对齐 */
+}
+
+/* Panel header */
+.dc-moa-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+  gap: .5rem;
+}
+.dc-moa-panel-title-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* 模型席标题栏右侧：搜索框 */
+.dc-moa-panel-header .dc-moa-search {
+  flex-shrink: 0;
+}
+.dc-moa-refresh-btn {
+  padding: .35rem .6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-background) 60%, transparent);
+  color: var(--color-foreground);
+  font-size: .75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.dc-moa-refresh-btn:hover:not(:disabled) {
+  border-color: var(--dc-accent);
+  background: color-mix(in srgb, var(--dc-accent) 12%, transparent);
+}
+.dc-moa-refresh-btn:disabled {
+  opacity: .6;
+  cursor: wait;
+}
+.dc-moa-panel-title {
+  font-size: .875rem; /* 14px */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--dc-accent);
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+.dc-moa-panel-sub {
+  font-size: .72rem;
+  color: var(--color-muted-foreground);
+  margin-top: .2rem;
+}
+
+/* THE BENCH - Left side model grid */
+.dc-moa-bench {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: .7rem;
+  background: color-mix(in srgb, var(--color-card) 82%, transparent);
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+/* Tabs row: tabs left + refresh right */
+.dc-moa-tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: .6rem;
+  gap: .5rem;
+}
+.dc-moa-tabs {
+  display: flex;
+  gap: .4rem;
+}
+.dc-moa-tab {
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: .3rem .7rem;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-muted-foreground);
+  transition: all .15s;
+}
+.dc-moa-tab:hover {
+  border-color: var(--dc-accent);
+  color: var(--color-foreground);
+}
+.dc-moa-tab.active {
+  border-color: var(--dc-accent);
+  background: color-mix(in srgb, var(--dc-accent) 15%, transparent);
+  color: var(--dc-accent);
+}
+
+/* Model card auto-fit grid — adapts to container width */
+.dc-moa-model-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: .45rem;
+}
+.dc-moa-bench-loading,
+.dc-moa-bench-err,
+.dc-moa-bench-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--color-muted-foreground);
+  font-size: .9rem;
+}
+.dc-moa-bench-err { color: #ef4444; }
+
+/* ── Model card (minimal: circle icon + name + provider) ── */
+.dc-moa-model-card {
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  padding: .45rem .45rem;
+  cursor: grab;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+  background: var(--color-card);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+}
+.dc-moa-model-card:hover {
+  border-color: color-mix(in srgb, var(--dc-accent) 50%, var(--color-border));
+}
+.dc-moa-model-card:active { cursor: grabbing; transform: scale(.98); }
+/* 选中模型 — 天蓝边框（区别于 .expert 白边框 和 .orch 黄边框） */
+.dc-moa-model-card.selected {
+  border-color: #38bdf8;
+  background: color-mix(in srgb, #38bdf8 10%, var(--color-card));
+  box-shadow: 0 0 0 1px color-mix(in srgb, rgba(56,189,248,.3), transparent);
+}
+/* 主调度/编排器模型 — 黄色边框 */
+.dc-moa-model-card.orch {
+  border-color: #eab308;
+  border-width: 1px;
+  background: color-mix(in srgb, #eab308 12%, var(--color-card));
+  box-shadow: 0 0 0 1px rgba(234,179,8,.3), 0 2px 8px rgba(234,179,8,.12);
+}
+/* 专家模型 — 边框（拖放到专家席时） */
+.dc-moa-model-card.expert {
+  border-color: var(--color-border);
+  border-width: 1px;
+  background: color-mix(in srgb, var(--color-foreground) 10%, var(--color-card));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-foreground) 28%, transparent), 0 2px 8px rgba(0,0,0,.12);
+}
+
+/* 圆形图标容器 — 镂空/内嵌风格 */
+.dc-moa-card-icon-circle {
+  width: 32px; height: 32px; min-width: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--color-muted-foreground) 12%, transparent);
+  overflow: hidden;
+  /* 内嵌凹陷效果 */
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.04);
+}
+.dc-moa-card-icon-circle img,
+.dc-moa-card-icon-circle svg {
+  width: 20px; height: 20px; object-fit: contain;
+  /* 继承 .dc-prov-ico 的 invert(1) 白色；这里加强确保镂空感 */
+  opacity: .72;
+}
+
+/* 文字区 */
+.dc-moa-card-text {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: .08rem;
+}
+.dc-moa-card-name {
+  font-size: .78rem; font-weight: 600; line-height: 1.25;
+  color: var(--color-foreground);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dc-moa-card-provider {
+  font-size: .68rem; line-height: 1.25;
+  color: var(--color-muted-foreground);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* 卡片右侧角标区域（仅「已拖入圆桌」的卡片显示：指挥👑 / 臭皮匠序号） */
+.dc-moa-card-rank-badge {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  margin-left: auto; /* 推到最右 */
+}
+/* 臭皮匠序号：无底色纯文字（与右侧编排器风格一致） */
+.dc-moa-rank-num {
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-foreground);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+/* 指挥皇冠：卡片内静态显示（非绝对定位，避免不可见） */
+.dc-moa-card-crown {
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
+}
+
+/* (legacy badges kept for detail-panel reuse) */
+.dc-moa-badge {
+  font-size: .62rem; padding: .12rem .38rem; border-radius: 4px;
+  background: color-mix(in srgb, var(--dc-accent) 12%, transparent);
+  color: var(--color-muted-foreground); font-weight: 500;
+}
+.dc-moa-badge-arena {
+  background: color-mix(in srgb, #22c55e 15%, transparent);
+  color: #22c55e;
+}
+.dc-moa-badge-cost {
+  background: color-mix(in srgb, #eab308 15%, transparent);
+  color: #eab308;
+}
+.dc-moa-badge-speed {
+  background: color-mix(in srgb, #3b82f6 15%, transparent);
+  color: #3b82f6;
+}
+
+/* CORE-ORCHESTRATOR - Right side */
+.dc-moa-orchestrator {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--color-card) 82%, transparent);
+  display: flex;
+  flex-direction: column;
+  /* 移除 align-self: end —— 改用 stretch 让左右两侧始终等高对齐 */
+}
+.dc-moa-orch-diagram {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: .5rem;
+}
+
+/* Expert slots column */
+.dc-moa-experts-col {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.dc-moa-expert-row {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.dc-moa-slot-label {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace);
+}
+
+/* Expert slot — 旧版边框已移除，由 dc-moa-expert-slot (line ~1204) 接替（无边框纯容器） */
+.dc-moa-slot-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  color: var(--color-muted-foreground);
+  font-size: .72rem;
+  text-align: center;
+}
+.dc-moa-slot-icon {
+  font-size: 1.2rem;
+  opacity: .5;
+}
+
+/* Filled expert card */
+.dc-moa-expert-filled {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  width: 100%;
+  position: relative;
+}
+.dc-moa-expert-filled .dc-moa-card-content {
+  align-items: flex-start;
+  flex: 1;
+}
+.dc-moa-expert-remove {
+  position: absolute;
+  top: -.3rem;
+  right: -.3rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-muted-foreground);
+  font-size: .65rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all .1s;
+}
+.dc-moa-expert-remove:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+/* Connector */
+.dc-moa-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  padding: .5rem 0;
+}
+.dc-moa-connector-line {
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--dc-accent) 50%, var(--color-border)), var(--dc-accent));
+}
+.dc-moa-connector-arrow {
+  color: var(--dc-accent);
+  font-size: 1rem;
+  animation: bounce-down 1s infinite;
+}
+@keyframes bounce-down {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* CORE node */
+.dc-moa-core-node {
+  min-height: 90px;
+  border: 2px solid var(--dc-accent);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--dc-accent) 10%, var(--color-card));
+  transition: all .12s;
+  cursor: pointer;
+  position: relative;
+}
+.dc-moa-core-node.filled {
+  border-style: solid;
+}
+.dc-moa-core-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  color: var(--dc-accent);
+}
+.dc-moa-core-icon {
+  font-size: 1.5rem;
+}
+.dc-moa-core-label {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+.dc-moa-core-hint {
+  font-size: .62rem;
+  opacity: .7;
+}
+.dc-moa-core-filled {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .4rem;
+  width: 100%;
+}
+.dc-moa-core-filled .dc-moa-card-content {
+  align-items: flex-start;
+  flex: 1;
+}
+.dc-moa-core-remove {
+  position: absolute;
+  top: -.4rem;
+  right: -.4rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-muted-foreground);
+  font-size: .7rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all .1s;
+}
+.dc-moa-core-remove:hover {
+  background: #ef4444;
+  color: white;
+  border-color: #ef4444;
+}
+
+/* Details panel */
+.dc-moa-details-panel {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: .9rem;
+  background: color-mix(in srgb, var(--color-card) 82%, transparent);
+}
+.dc-moa-details-content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .35rem .8rem;
+  align-items: baseline;
+}
+.dc-moa-detail-name {
+  grid-column: 1 / -1;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+.dc-moa-detail-row {
+  display: contents;
+}
+.dc-moa-detail-label {
+  font-size: .72rem;
+  color: var(--color-muted-foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.dc-moa-detail-value {
+  font-size: .85rem;
+  font-weight: 500;
+}
+.dc-moa-details-empty {
+  color: var(--color-muted-foreground);
+  font-size: .82rem;
+  text-align: center;
+  padding: .8rem;
+}
+
+/* Actions bar */
+.dc-moa-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .75rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dc-moa-main {
+    grid-template-columns: 1fr;
+  }
+  .dc-moa-model-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+  .dc-moa-bench {
+    max-height: 300px;
+  }
+}
+@media (max-width: 600px) {
+  .dc-moa-model-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === 智囊团 · 专家圆桌 新增样式（覆盖 / 补充） === */
+.dc-moa-main { grid-template-columns: 2fr 3fr; }
+.dc-moa-bench { max-height: 480px; }
+.dc-moa-card-icon img { width: 24px; height: 24px; object-fit: contain; }
+
+/* ══════════════════════════════════════
+   圆桌编排器 — 连接线系统（树形分叉曲线）
+   viewBox 300×360, 起点(150,172) → 终点(专家顶,305)
+   ══════════════════════════════════════ */
+
+/* 容器：竖向圆桌 (CORE在上 · EXPERTS在下) — 参考 图2 紧凑布局 */
+.dc-moa-roundtable-v {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .4rem 0 .2rem;
+  position: relative;
+  min-height: 470px;
+}
+
+/* SVG 连接线层 — 覆盖整个圆桌区域 */
+.dc-moa-round-svg-v {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 底层：虚线轨道（树形分支，清晰可见）─── */
+.dc-moa-dash-track {
+  stroke: rgba(234, 179, 8, 0.35);
+  stroke-width: 1.8;
+  fill: none;
+  stroke-dasharray: 5 7;
+  opacity: 1;
+}
+
+/* ── 中层：流动光线（金色明亮，沿曲线流动）─── */
+.dc-moa-dash-flow {
+  stroke: #eab308;
+  stroke-width: 2.2;
+  fill: none;
+  opacity: .6;
+  stroke-dasharray: 8 16;
+  animation: moa-flow-dash 2.2s linear infinite;
+  filter: drop-shadow(0 0 3px rgba(234,179,8,.3));
+}
+@keyframes moa-flow-dash {
+  to { stroke-dashoffset: -24; }
+}
+
+/* ── 运行态：流动线变亮加速 + 发光 ── */
+.moa-running .dc-moa-dash-track {
+  opacity: .25;
+}
+.moa-running .dc-moa-dash-flow {
+  stroke: #facc15;
+  stroke-width: 3;
+  opacity: .95;
+  stroke-dasharray: 10 12;
+  animation: moa-flow-dash-active .8s linear infinite;
+  filter: drop-shadow(0 0 5px rgba(250,204,21,.55)) drop-shadow(0 0 12px rgba(234,179,8,.3));
+}
+@keyframes moa-flow-dash-active {
+  to { stroke-dashoffset: -22; }
+}
+
+/* ── 流动粒子（SVG circle + animateMotion）─── */
+.dc-moa-particle {
+  opacity: 0;
+}
+
+/* 运行态：粒子可见 + 金色发光 */
+.moa-running .dc-moa-particle {
+  opacity: 1;
+  fill: #fef08a;
+  filter: drop-shadow(0 0 4px rgba(254,240,138,.95)) drop-shadow(0 0 10px rgba(234,179,8,.6));
+}
+
+/* ── 运行态标签 ── */
+.dc-moa-running-badge {
+  position: absolute;
+  top: .4rem;
+  right: .6rem;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #c9a227;
+  padding: .25rem .65rem;
+  border-radius: 999px;
+  background: rgba(201,162,39,.1);
+  border: 1px solid rgba(201,162,39,.25);
+  backdrop-filter: blur(6px);
+  animation: moa-badge-pulse 1.8s ease-in-out infinite;
+}
+.dc-moa-running-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c9a227;
+  box-shadow: 0 0 6px rgba(201,162,39,.7);
+  animation: moa-dot-blink .9s ease-in-out infinite alternate;
+}
+@keyframes moa-badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,39,.2); }
+  50%      { box-shadow: 0 0 0 6px rgba(201,162,39,.08); }
+}
+@keyframes moa-dot-blink {
+  from { opacity: .5; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1.1); }
+}
+
+/* ── 运行态：专家席位脉冲发光 ── */
+.moa-running .dc-moa-expert-circle.filled {
+  animation: moa-seat-glow 1.6s ease-in-out infinite;
+  animation-delay: calc(var(--seat-idx, 0) * .2s);
+}
+@keyframes moa-seat-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,39,0); }
+  50%      { box-shadow: 0 0 0 5px rgba(201,162,39,.18), 0 0 18px rgba(201,162,39,.12); }
+}
+/* 运行态：指挥圆也发光 */
+.moa-running .dc-moa-core-circle.filled {
+  animation: moa-core-glow 2s ease-in-out infinite;
+}
+@keyframes moa-core-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,162,39,0), 0 0 20px rgba(201,162,39,0); }
+  30%      { box-shadow: 0 0 0 4px rgba(201,162,39,.2), 0 0 24px rgba(201,162,39,.18); }
+  70%      { box-shadow: 0 0 0 2px rgba(201,162,39,.12), 0 0 16px rgba(201,162,39,.1); }
+}
+
+/* ── CORE（上方圆）—— 参考 图2：emoji + 标签 + 中圆 + 模型名 ── */
+.dc-moa-core-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,.3));
+}
+.dc-moa-core-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .12rem;
+  z-index: 2;
+  padding-top: .2rem;
+  margin-bottom: 2.4rem;
+}
+.dc-moa-core-label-top {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+/* 旧 .dc-moa-core-crown 已移除 → 皇冠改为图标右上角角标 (.dc-moa-crown-badge) */
+/* CORE 圆 — 撑满编排器区域 */
+.dc-moa-core-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2.5px dashed var(--color-border);
+  background: color-mix(in srgb, var(--color-foreground) 8%, var(--color-card));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .18s;
+  margin: .1rem 0;
+}
+.dc-moa-core-circle:hover {
+  border-color: #eab308;
+  box-shadow: 0 0 0 6px color-mix(in srgb, #eab308 14%, transparent);
+}
+.dc-moa-core-circle.filled {
+  border-style: solid;
+  border-color: #eab308;
+  border-width: 3px;
+  background: #fff;
+  box-shadow: 0 0 24px color-mix(in srgb, #eab308 22%, transparent);
+}
+.dc-moa-core-inner { width: 100px; height: 100px; display: grid; place-items: center; position: relative; }
+.dc-moa-core-inner img, .dc-moa-core-inner svg { width: 96px; height: 96px; object-fit: contain; }
+/* 圆桌内覆盖全局 .dc-prov-ico{1.15rem}，让图标撑满圆 */
+.dc-moa-core-inner .dc-prov-ico { width: 96px !important; height: 96px !important; }
+/* 👑 皇冠角标 — 绝对定位到图标右上角 */
+.dc-moa-crown-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  font-size: 1rem;
+  line-height: 1;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,.5));
+  z-index: 3;
+  pointer-events: none;
+}
+/* 移除指挥模型按钮（悬停核心圆时出现在右上角） */
+.dc-moa-core-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: #ef4444;
+  color: #fff;
+  font-size: .8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+.dc-moa-core-circle { position: relative; }
+.dc-moa-core-circle:hover .dc-moa-core-remove { display: flex; }
+.dc-moa-core-name {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+  text-align: center;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: .2rem;
+}
+.dc-moa-core-empty-hint {
+  font-size: .8rem;
+  color: var(--color-muted-foreground);
+  opacity: .7;
+  margin-top: .25rem;
+}
+
+/* ── 白底圆内的图标：取消全局 invert(1)，恢复原始彩色/深色 ── */
+.dc-moa-core-inner .dc-prov-ico,
+.dc-moa-expert-inner .dc-prov-ico {
+  filter: none;
+  opacity: 1;
+}
+
+/* ── 图标内层背景：透明化（不再显示白色小圆）── */
+.dc-moa-icon-bg {
+  background: transparent !important;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── EXPERTS（下方一排）─── 大圆 + 图标 + 名称 */
+.dc-moa-experts-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap; /* 专家多于 4 个时换行 */
+  gap: 1.2rem; /* 专家之间拉开距离 */
+  z-index: 2;
+  margin-top: .4rem;
+  margin-bottom: 1.6rem; /* 给下方拖动提示留空间 */
+  padding: 0 .5rem;
+}
+.dc-moa-expert-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+}
+.dc-moa-expert-label {
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+  margin-bottom: .15rem;
+}
+.dc-moa-expert-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2.5px dashed var(--color-border);
+  background: color-mix(in srgb, var(--color-card) 60%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .18s;
+  position: relative;
+}
+.dc-moa-expert-circle:hover {
+  border-color: color-mix(in srgb, var(--color-foreground) 40%, var(--color-border));
+  transform: scale(1.06);
+}
+.dc-moa-expert-circle.filled {
+  border-style: solid;
+  border-color: color-mix(in srgb, var(--color-foreground) 30%, var(--color-border));
+  border-width: 2.5px;
+  background: #fff;
+}
+.dc-moa-expert-circle.selected {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+.dc-moa-expert-inner { width: 86px; height: 86px; display: grid; place-items: center; }
+.dc-moa-expert-inner img, .dc-moa-expert-inner svg { width: 80px; height: 80px; object-fit: contain; }
+/* 圆桌内覆盖全局 .dc-prov-ico{1.15rem}，让图标撑满圆 */
+.dc-moa-expert-inner .dc-prov-ico { width: 80px !important; height: 80px !important; }
+.dc-moa-expert-empty {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-muted-foreground);
+  opacity: .3;
+}
+.dc-moa-expert-name {
+  font-size: .78rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: .15rem;
+  color: var(--color-foreground);
+}
+/* 移除专家按钮（悬停专家圆时出现在右上角，仅额外添加的专家可删） */
+.dc-moa-expert-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: none;
+  background: #ef4444;
+  color: #fff;
+  font-size: .8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+.dc-moa-expert-circle:hover .dc-moa-expert-remove { display: flex; }
+/* 末尾「+ 添加专家」席位 */
+.dc-moa-expert-add-circle {
+  border-style: dashed;
+  border-color: var(--color-accent, #38bdf8);
+  color: var(--color-accent, #38bdf8);
+  opacity: .85;
+}
+.dc-moa-expert-add-circle .dc-moa-expert-empty { opacity: .9; font-size: 2rem; }
+.dc-moa-expert-add-circle:hover { transform: scale(1.08); border-color: var(--color-accent, #38bdf8); }
+.dc-moa-expert-add .dc-moa-expert-label { color: var(--color-accent, #38bdf8); }
+
+/* ── 智囊团会商模式：紧凑分段控件 + 悬停说明 ── */
+.dc-moa-debate-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 0;
+  flex-shrink: 1;
+  position: relative;
+  z-index: 8;
+}
+.dc-moa-debate-modes {
+  position: relative;
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-background) 68%, transparent);
+  overflow: visible;
+}
+.dc-moa-debate-mode {
+  /* 让两个浮层共同以整个分段控件为锚点，而非各自按钮。这样提示
+     总是朝编排器内部展开，不会从「单轮会商」右侧撞上面板边界。 */
+  position: static;
+  border: 0;
+  border-radius: 6px;
+  padding: .26rem .48rem;
+  background: transparent;
+  color: var(--color-muted-foreground);
+  font-size: .7rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.dc-moa-debate-mode.active {
+  background: color-mix(in srgb, var(--dc-accent) 18%, var(--color-card));
+  color: var(--color-foreground);
+  box-shadow: 0 1px 3px color-mix(in srgb, #000 18%, transparent);
+}
+.dc-moa-debate-tooltip {
+  position: absolute;
+  top: calc(100% + .55rem);
+  right: 0;
+  z-index: 20;
+  box-sizing: border-box;
+  width: min(22rem, calc(100vw - 3rem));
+  padding: .42rem .58rem;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-popover, var(--color-card));
+  color: var(--color-popover-foreground, var(--color-foreground));
+  box-shadow: 0 8px 24px color-mix(in srgb, #000 28%, transparent);
+  font-size: .66rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  white-space: normal;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-3px);
+  transition: opacity .14s ease, transform .14s ease, visibility 0s linear .14s;
+}
+.dc-moa-debate-mode:hover .dc-moa-debate-tooltip,
+.dc-moa-debate-mode:focus-visible .dc-moa-debate-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+/* 窄屏时分段控件靠左排列，提示改为向右展开以留在可视区域内。 */
+@media (max-width: 640px) {
+  .dc-moa-debate-tooltip {
+    right: auto;
+    left: 0;
+  }
+}
+/* dc-switch 本身样式已在通用定义中（line ~189），此处仅缩小尺寸 */
+.dc-moa-drag-hint {
+  font-size: .65rem;
+  color: var(--color-muted-foreground);
+  opacity: .75;
+  white-space: nowrap;
+  pointer-events: none;
+  margin-top: auto; /* 推到底部 */
+  padding-bottom: .3rem;
+}
+
+/* ── Bottom: detail card + copy panel (display:contents → children join parent grid) ── */
+.dc-moa-wrapper > .dc-moa-bottom {
+  display: contents;
+}
+/* 底部两栏显式列定位：详情卡=左(对齐模型席) / 复制面板=右(对齐圆桌) */
+.dc-moa-detail-card {
+  grid-column: 1;
+  grid-row: 3;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: .7rem .8rem;
+  background: color-mix(in srgb, var(--color-card) 82%, transparent);
+  overflow: hidden;       /* 裁剪到网格单元格，内部 summary-list 滚动 */
+  min-height: 0;          /* 关键：允许 grid 子项收缩，让内部 flex:1 + overflow-y 生效 */
+  max-height: min(52vh, 500px); /* 与右侧聊天面板等高约束，内容多时内部滚动 */
+}
+.dc-moa-detail-head { display: flex; align-items: center; gap: .6rem; margin-bottom: .45rem; }
+.dc-moa-detail-icon {
+  width: 40px; height: 40px; min-width: 40px; border-radius: 50%;
+  border: 1.5px solid var(--color-border); background: var(--color-background);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.dc-moa-detail-icon img, .dc-moa-detail-icon svg { width: 26px; height: 26px; object-fit: contain; }
+.dc-moa-detail-meta { flex: 1; min-width: 0; }
+.dc-moa-detail-topline { display: flex; align-items: center; gap: .5rem; }
+.dc-moa-detail-name { font-size: 1rem; font-weight: 700; color: var(--color-foreground); }
+.dc-moa-detail-provider {
+  font-size: .68rem; color: var(--color-muted-foreground);
+  font-family: var(--font-mono, ui-monospace, monospace);
+  letter-spacing: .03em; margin-top: .15rem;
+}
+.dc-moa-detail-desc {
+  font-size: .72rem; line-height: 1.45; color: var(--color-muted-foreground);
+  margin: 0 0 .6rem; /* 减margin */
+}
+
+/* stat bars — 加高加宽让数据更透气 */
+.dc-moa-bars { display: flex; flex-direction: column; gap: .7rem; margin-bottom: .6rem; }
+.dc-moa-bar-row { display: flex; align-items: center; gap: .7rem; min-height: 28px; }
+.dc-moa-bar-lbl {
+  font-size: .68rem; font-weight: 700; letter-spacing: .04em;
+  color: var(--color-muted-foreground); width: 85px; flex-shrink: 0;
+  text-transform: uppercase; white-space: nowrap;
+}
+.dc-moa-bar-track {
+  flex: 1; height: 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--color-border) 70%, transparent); overflow: hidden;
+}
+.dc-moa-bar-fill { height: 100%; border-radius: 999px; transition: width .25s ease; }
+.dc-moa-bar-agent { background: #22c55e; }
+.dc-moa-bar-cost { background: #ef4444; }
+.dc-moa-bar-speed { background: #eab308; }
+.dc-moa-bar-session { background: #3b82f6; }
+.dc-moa-bar-lbl-moa { color: #a78bfa; font-size: .68rem; }  /* purple tint for MoA rows */
+.dc-moa-bar-moa-session { background: #8b5cf6; }        /* purple for MoA session */
+.dc-moa-bar-moa-token { background: #a855f7; }          /* lighter purple for MoA token */
+.dc-moa-bar-total  { background: #06b6d4; }           /* cyan for total tokens */
+.dc-moa-bar-avg    { background: #f97316; }           /* orange for avg per session */
+.dc-moa-bar-val { font-size: .72rem; font-weight: 700; color: var(--color-foreground); width: 60px; text-align: right; flex-shrink: 0; }
+.dc-moa-bar-val-wide { width: auto; flex-shrink: 1; }
+.dc-moa-bar-track-avg { background: color-mix(in srgb, var(--color-border) 50%, transparent); opacity: .7; }
+.dc-moa-bar-row-last { border-top: 1px dashed color-mix(in srgb, var(--color-border) 50%, transparent); padding-top: .3rem; margin-top: .2rem; }
+.dc-moa-detail-footer {
+  font-size: .52rem; letter-spacing: .08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-muted-foreground) 60%, transparent);
+  border-top: 1px dashed var(--color-border); padding-top: .5rem;
+}
+
+/* ── 全屏模式：仅显示智囊团对话面板（URL: ?view=moa-full）── */
+.dc-moa-fullscreen-page {
+  position: fixed; inset: 0;
+  z-index: 99999;
+  background: var(--background-base, #041c1c) !important;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+.dc-moa-fs-only {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  background: var(--background-base, #041c1c) !important;
+}
+.dc-moa-fs-only .dc-moa-copy-panel {
+  grid-column: unset; grid-row: unset;
+  max-height: none; height: 100%;
+  flex: 1; display: flex; flex-direction: column;
+  background: var(--color-card, var(--background-base, #041c1c)) !important;
+  border-radius: 0; border: none;
+}
+.dc-moa-fs-only .dc-moa-copy-body { flex: 1; }
+
+/* ── 独立页面 body（无 Dashboard 外壳）──
+   配色完全由 JS 在启动时从同域主页面 /decuria 读取并注入到 documentElement
+   （见 boot() 的 _applyDashboardVars），因此这里不再硬编码任何 --color-*，
+   只保留布局属性与兜底背景/前景色。 */
+.dc-standalone-body {
+  margin: 0; padding: 0;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--background-base, #041c1c) !important;
+  color: var(--color-foreground, #ffe6cb) !important;
+  min-height: 100vh;
+}
+
+/* Right: COPY FOR HERMES */
+.dc-moa-copy-panel {
+  grid-column: 2;
+  grid-row: 3; /* 与圆桌详情卡同处底行、右下角，不再跑到顶部 */
+  max-height: min(52vh, 500px); /* 减约120px，内部滚动 */
+  border: 1px solid var(--color-border); border-radius: 12px;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  min-height: 0; /* 关键：允许 grid 子项收缩 */
+}
+.dc-moa-copy-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: .5rem;
+  padding: .45rem .7rem; border-bottom: 1px solid var(--color-border);
+  font-size: .72rem; font-weight: 700; letter-spacing: .04em; color: var(--color-foreground);
+}
+.dc-moa-copy-header-left { display: flex; align-items: center; gap: .55rem; min-width: 0; }
+/* 聊天框内的组合方案下拉（与右侧按钮完全一致） */
+/* 下拉框容器：用于自定义箭头（Chrome 原生 select 箭头不可靠） */
+.dc-moa-copy-select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.dc-moa-copy-select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 9px;
+  top: 50%;
+  transform: translateY(-25%);
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid var(--color-muted-foreground, #9ca3af);
+  pointer-events: none;
+}
+.dc-moa-copy-select {
+  font-size: .76rem; font-weight: 500;
+  padding: .18rem 22px .18rem 8px !important;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background-color: color-mix(in srgb, var(--color-card) 60%, transparent);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-foreground);
+  max-width: 110px;
+  cursor: pointer;
+  line-height: 1.2;
+  height: 30px;
+  box-sizing: border-box;
+}
+.dc-moa-copy-select:focus { outline: none; border-color: color-mix(in srgb, var(--dc-accent) 50%, var(--color-border)); }
+.dc-moa-copy-body {
+  flex: 1; margin: 0; padding: .8rem; overflow: auto;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: .68rem; line-height: 1.55; color: var(--color-foreground);
+  white-space: pre-wrap; word-break: break-word;
+}
+.dc-moa-detail-empty {
+  grid-column: 1;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px dashed var(--color-border); border-radius: 12px;
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  min-height: 170px;
+}
+.dc-moa-detail-empty-hint { color: var(--color-muted-foreground); font-size: .85rem; }
+.dc-moa-copy-actions { display: flex; gap: .4rem; }
+.dc-moa-copy-actions .dc-btn { white-space: nowrap; }
+
+/* ═══════════════ 智囊团对话 · 聊天框形式 ═══════════════ */
+.dc-chat { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+.dc-chat .dc-chat-body {
+  flex: 1; min-height: 0; overflow-y: auto;
+  padding: .5rem .6rem;
+  display: flex; flex-direction: column;
+  gap: 0;
+}
+/* 会话分隔线 */
+.dc-chat-divider {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .35rem .3rem .25rem;
+  font-size: .62rem; color: var(--color-muted-foreground);
+  position: relative;
+}
+.dc-chat-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: var(--color-border);
+  opacity: .5;
+}
+.dc-chat-divider::before {
+  content: ''; width: .5rem; height: 1px;
+  background: var(--color-border); opacity: .5;
+}
+.dc-chat-divider-time { font-weight: 700; letter-spacing: .03em; white-space: nowrap; }
+.dc-chat-divider-prompt { opacity: .7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 160px; }
+
+/* 聊天消息行 */
+.dc-chat-messages { display: flex; flex-direction: column; gap: .5rem; }
+.dc-chat-msg { display: flex; }
+/* 用户消息靠右 */
+.dc-chat-user { justify-content: flex-end; }
+/* 智囊团回复（合并卡片）靠左 */
+.dc-chat-moa-reply { justify-content: flex-start; }
+
+/* ── 用户气泡（靠右，简洁无头像）── */
+.dc-chat-bubble {
+  display: flex; align-items: center; gap: .35rem;
+  max-width: 75%; padding: .3rem .55rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--color-border) 40%, transparent);
+}
+.dc-chat-bubble-user {
+  background: color-mix(in srgb, var(--color-card) 70%, transparent);
+  border-color: color-mix(in srgb, var(--color-border) 50%, transparent);
+  border-bottom-right-radius: 3px;
+}
+.dc-chat-bubble-user .dc-chat-sender { color: var(--color-muted-foreground); font-size: .65rem; }
+/* 用户气泡隐藏头像 */
+.dc-chat-bubble-user .dc-chat-avatar { display: none; }
+
+/* 头像 */
+.dc-chat-avatar { font-size: 1rem; flex-shrink: 0; }
+/* 气泡内文本区 */
+.dc-chat-body { display: flex; flex-direction: column; gap: .08rem; min-width: 0; }
+
+/* ── 智囊团合并卡片（一轮讨论 = 1 张卡片）──
+   共享基础样式：智囊团回复 & 共识报告 用同一套卡片外观 */
+.dc-chat-card {
+  max-width: 92%;
+  width: 92%;
+  background: color-mix(in srgb, var(--color-card) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.dc-chat-card-moa { /* 与共识报告共用 .dc-chat-card 基础样式，仅头部标题区分 */ }
+/* 卡片头部 */
+.dc-chat-card-header {
+  display: flex; align-items: center; gap: .4rem;
+  padding: .45rem .7rem .35rem;
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-border) 15%, transparent);
+}
+.dc-chat-card-icon { font-size: .9rem; }
+.dc-chat-card-title { font-size: .72rem; font-weight: 700; letter-spacing: .03em; color: var(--color-foreground); }
+.dc-chat-card-meta { font-size: .6rem; color: var(--color-muted-foreground); margin-left: auto; }
+
+/* 专家区（视觉弱化：淡色/低对比，让指挥区更突出）*/
+.dc-chat-card-experts { padding: .35rem .7rem; display: flex; flex-direction: column; gap: .3rem; }
+.dc-chat-expert-label {
+  display: flex; align-items: center; gap: .3rem;
+  font-size: .6rem; font-weight: 600;
+  color: color-mix(in srgb, #38bdf8 55%, var(--color-muted-foreground));
+  margin-bottom: .05rem;
+}
+.dc-chat-expert-model {
+  font-size: .56rem; font-weight: 400; opacity: .5;
+  color: var(--color-muted-foreground);
+}
+.dc-chat-expert-text {
+  font-size: .7rem; line-height: 1.5;
+  color: var(--color-muted-foreground);
+  white-space: pre-wrap; word-break: break-word;
+  padding-left: .2rem;
+  opacity: .78;
+}
+
+/* 卡片内部分隔线（专家 vs 指挥）*/
+.dc-chat-card-sep {
+  height: 1px;
+  margin: .35rem .7rem;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, #eab308 40%, transparent), transparent);
+}
+
+/* 指挥总结区 */
+.dc-chat-card-agg { padding: .4rem .7rem .55rem; background: color-mix(in srgb, #eab308 6%, transparent); }
+.dc-chat-agg-label {
+  display: flex; align-items: center; gap: .3rem;
+  font-size: .64rem; font-weight: 700; color: #eab308; margin-bottom: .12rem;
+}
+.dc-chat-agg-icon { font-size: .85rem; }
+.dc-chat-agg-model {
+  font-size: .58rem; font-weight: 400; opacity: .65;
+  color: var(--color-muted-foreground);
+}
+.dc-chat-agg-text {
+  font-size: .74rem; line-height: 1.58;
+  color: var(--color-foreground); white-space: pre-wrap; word-break: break-word;
+  padding-left: .25rem;
+}
+
+/* 通用文本 */
+.dc-chat-sender { font-size: .6rem; font-weight: 700; letter-spacing: .02em; opacity: .85; }
+
+/* 共识报告卡片 —— 与智囊团回复共用 .dc-chat-card 基础样式，仅标题用蓝色区分 */
+.dc-chat-card-consensus .dc-chat-card-title,
+.dc-chat-card-consensus .dc-chat-card-icon { color: #38bdf8; }
+.dc-chat-consensus-text {
+  font-size: .74rem; line-height: 1.6;
+  color: var(--color-foreground); white-space: normal; word-break: break-word;
+  padding: .45rem .7rem .55rem;
+}
+/* 共识报告内渲染的 Markdown 样式（正文全部常规前景色，仅卡片头标题蓝色） */
+.dc-chat-consensus-text .dc-md-h1,
+.dc-chat-consensus-text .dc-md-h2,
+.dc-chat-consensus-text .dc-md-h3 { margin: .5rem 0 .3rem; line-height: 1.35; }
+.dc-chat-consensus-text .dc-md-h1 { font-size: .9rem; font-weight: 800; }
+.dc-chat-consensus-text .dc-md-h2 { font-size: .82rem; font-weight: 700; }
+.dc-chat-consensus-text .dc-md-h3 { font-size: .78rem; font-weight: 700; }
+.dc-chat-consensus-text .dc-md-p { margin: .25rem 0; }
+.dc-chat-consensus-text .dc-md-list { margin: .25rem 0 .25rem 1.1rem; padding: 0; }
+.dc-chat-consensus-text .dc-md-list li { margin: .15rem 0; }
+.dc-chat-consensus-text .dc-md-code {
+  font-family: var(--font-mono, ui-monospace, monospace); font-size: .86em;
+  background: color-mix(in srgb, var(--color-border) 35%, transparent);
+  padding: .05rem .3rem; border-radius: 4px;
+}
+.dc-chat-consensus-text strong { font-weight: 700; color: var(--color-foreground); }
+
+/* 消息复制按钮（悬停显示，点击复制整条对话） */
+.dc-chat-copy-btn {
+  margin-left: auto; border: none; background: transparent; cursor: pointer;
+  font-size: .8rem; color: var(--color-muted-foreground);
+  padding: .12rem .32rem; border-radius: 6px; opacity: .4;
+  transition: opacity .15s, background .15s, color .15s;
+  line-height: 1;
+}
+.dc-chat-copy-btn:hover { opacity: 1; background: color-mix(in srgb, var(--color-border) 45%, transparent); color: var(--color-foreground); }
+.dc-chat-copy-btn.copied { opacity: 1; color: #22c55e; }
+/* 用户气泡内的复制按钮 */
+.dc-chat-bubble { position: relative; }
+.dc-chat-copy-btn-user {
+  position: absolute; top: 2px; right: 3px;
+  font-size: .72rem; padding: .06rem .26rem;
+  background: color-mix(in srgb, var(--color-card) 85%, transparent);
+}
+
+/* 辩论角色编辑（P2） */
+.dc-moa-role-edit { margin: .5rem .25rem 0; display: flex; flex-direction: column; gap: .25rem; }
+.dc-moa-role-lbl { font-size: .62rem; color: var(--color-muted-foreground); font-weight: 600; letter-spacing: .02em; }
+.dc-moa-role-input {
+  font-size: .72rem; padding: .35rem .5rem; border-radius: 7px;
+  border: 1px solid var(--color-border, #2b3344); background: var(--color-input, #1b2230);
+  color: var(--color-foreground); outline: none; width: 100%; box-sizing: border-box;
+}
+.dc-moa-role-input:focus { border-color: #38bdf8; }
+.dc-chat-text {
+  font-size: .74rem; line-height: 1.55;
+  color: var(--color-foreground);
+  white-space: pre-wrap; word-break: break-word;
+}
+
+/* 状态提示 */
+.dc-chat-hint { font-size: .75rem; color: var(--color-muted-foreground); padding: 2.5rem .5rem; text-align: center; }
+.dc-chat-running {
+  text-align: center; padding: .4rem;
+  font-size: .7rem; color: #38bdf8; animation: dc-pulse 1.6s ease-in-out infinite;
+}
+@keyframes dc-pulse {
+  0%,100%{opacity:.45} 50%{opacity:1}
+}
+.dc-chat-loading-hint { font-size: .68rem; color: var(--color-muted-foreground); padding: .3rem .5rem; text-align: center; font-style: italic; }
+.dc-chat-err { margin: 0 .6rem; padding: .35rem .55rem; border-radius: 8px; background: color-mix(in srgb, #ef4444 16%, transparent); color: #fca5a5; font-size: .68rem; }
+
+/* 输入行 */
+.dc-chat-input-row { display: flex; gap: .4rem; padding: .45rem .6rem .6rem; border-top: 1px solid var(--color-border); flex-shrink: 0; }
+.dc-chat-input { flex: 1; min-width: 0; padding: .42rem .58rem; border-radius: 10px; border: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-background) 88%, black); color: var(--color-foreground); font-size: .74rem; }
+.dc-chat-input:focus { outline: none; border-color: #38bdf8; box-shadow: 0 0 0 2px color-mix(in srgb, #38bdf8 15%, transparent); }
+.dc-chat-input::placeholder { color: var(--color-muted-foreground); }
+
+/* 主发送按钮 / 全局 primary — 统一用暗调主题风格 */
+.dc-btn-primary {
+  border-color: color-mix(in srgb, var(--dc-accent) 50%, var(--color-border));
+  color: var(--dc-accent);
+  background: color-mix(in srgb, var(--dc-accent) 18%, transparent);
+  font-weight: 600;
+}
+.dc-btn-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--dc-accent) 30%, transparent);
+  border-color: color-mix(in srgb, var(--dc-accent) 65%, var(--color-border));
+}
+.dc-btn-ghost { background: transparent; color: var(--color-muted-foreground); border-color: transparent; }
+.dc-btn-ghost:hover { background: color-mix(in srgb, var(--color-border) 40%, transparent); color: var(--color-foreground); }
+
+/* ═══ 全屏模式（真正全屏：100vw × 100vh）═══ */
+.dc-chat-fs-overlay {
+  position: fixed; inset: 0; z-index: 99999;
+  background: var(--color-background, #0f1117);
+  display: flex; flex-direction: column;
+  animation: dc-fadein .15s ease-out;
+}
+@keyframes dc-fadein { from{opacity:0} to{opacity:1} }
+/* 去掉 modal 包裹层，直接 overlay 就是容器 */
+.dc-chat-fs-modal {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.dc-chat-fs-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .65rem 1rem; border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.dc-chat-fs-title { font-size: .82rem; font-weight: 700; color: var(--color-foreground); letter-spacing: .03em; }
+.dc-chat-fs-close {
+  width: 1.8rem; height: 1.8rem; border-radius: 8px;
+  border: 1px solid var(--color-border); background: transparent;
+  color: var(--color-muted-foreground); font-size: 1rem; line-height: 1;
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  transition: background .15s ease, color .15s ease;
+}
+.dc-chat-fs-close:hover { background: var(--color-muted, #1f2430); color: var(--color-foreground); }
+/* 全屏模式下的聊天区：更大字号 */
+.dc-chat-fs .dc-chat-body { padding: .65rem .85rem; }
+.dc-chat-fs .dc-chat-bubble { max-width: 92%; padding: .45rem .7rem; }
+.dc-chat-fs .dc-chat-avatar { font-size: 1.2rem; }
+.dc-chat-fs .dc-chat-sender { font-size: .66rem; }
+.dc-chat-fs .dc-chat-text { font-size: .82rem; line-height: 1.6; }
+.dc-chat-fs .dc-chat-divider { padding: .45rem .3rem .3rem; font-size: .66rem; }
+.dc-chat-fs .dc-chat-input-row { padding: .55rem .85rem .75rem; }
+.dc-chat-fs .dc-chat-input { font-size: .82rem; padding: .5rem .65rem; }
+.dc-moa-apply-err {
+  margin: 0 .8rem; padding: .4rem .6rem; border-radius: 8px;
+  background: color-mix(in srgb, #ef4444 16%, transparent);
+  color: #f87171; font-size: .72rem; line-height: 1.4;
+  border: 1px solid color-mix(in srgb, #ef4444 40%, transparent);
+}
+
+/* 未选择模型时：智囊团用量总览 —— flex:1 撑满卡片剩余高度，内部滚动 */
+.dc-moa-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  flex: 1;            /* 撑满 detail-card 剩余空间 */
+  min-height: 0;      /* 允许 flex 子项收缩到小于内容尺寸 */
+  overflow-y: auto;   /* 内容多时内部滚动 */
+  padding-right: .25rem;
+}
+.dc-moa-summary-row {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .35rem .45rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--color-background) 50%, transparent);
+}
+.dc-moa-summary-icon {
+  width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+  border: 1px solid var(--color-border); background: var(--color-background);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.dc-moa-summary-icon img, .dc-moa-summary-icon svg { width: 18px; height: 18px; object-fit: contain; }
+.dc-moa-summary-info { flex: 1; min-width: 0; }
+.dc-moa-summary-name { font-size: .78rem; font-weight: 700; color: var(--color-foreground); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dc-moa-summary-role { font-size: .6rem; color: var(--color-muted-foreground); letter-spacing: .03em; margin-top: .05rem; }
+.dc-moa-summary-nums { font-size: .62rem; color: var(--color-foreground); white-space: nowrap; text-align: right; }
+.dc-moa-summary-nums span { display: inline; }
+.dc-moa-summary-empty { font-size: .78rem; color: var(--color-muted-foreground); padding: 1rem 0; text-align: center; }
+
+/* ── Flat summary rows (no icon, no border, bar-style like detail card) ── */
+.dc-moa-summary-row-flat {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border) 30%, transparent);
+}
+.dc-moa-summary-row-flat:last-child { border-bottom: none; }
+.dc-moa-summary-name-flat {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  margin-bottom: .05rem;
+}
+.dc-moa-summary-model-name {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--color-foreground);
+}
+.dc-moa-summary-role-flat {
+  font-size: .6rem;
+  color: var(--color-muted-foreground);
+  letter-spacing: .03em;
+}
+.dc-moa-bar-row-compact {
+  gap: .4rem;
+  min-height: 0;
+}
+
+@media (max-width: 1100px) {
+  /* 仍保持模型席 / 编排器双栏；圆桌由 ResizeObserver 等比缩放。
+     不在此处改成单列，否则底部固定 grid-column:2 会生成隐式列，
+     令主区只占左侧第一列并把编排器挤到下一行。 */
+  .dc-moa-wrapper {
+    grid-template-columns: minmax(260px, 2fr) minmax(0, 3fr);
+  }
+  .dc-moa-main {
+    grid-column: 1 / span 2;
+    grid-template-columns: minmax(260px, 2fr) minmax(0, 3fr);
+    min-width: 0;
+  }
+  .dc-moa-main > .dc-moa-bench,
+  .dc-moa-main > .dc-moa-orchestrator {
+    min-width: 0;
+  }
+}
+
+/* 非移动端两栏应共享同一网格行高度。模型席原先的 480px 上限
+   小于完整圆桌在 1:1 比例下约 542px 的外框高度，导致 stretch 被截断。
+   544px 覆盖完整设计画布，同时保留模型过多时的内部滚动。 */
+@media (min-width: 641px) {
+  .dc-moa-main > .dc-moa-bench,
+  .dc-moa-main > .dc-moa-orchestrator {
+    align-self: stretch;
+    box-sizing: border-box;
+  }
+  .dc-moa-main > .dc-moa-bench { max-height: 544px; }
+}
+
+/* 只有真正的移动端宽度才改成单列；同时重排所有显式网格位置，
+   确保不会因仍指向 column 2 而创建看不见的隐式第二列。 */
+@media (max-width: 640px) {
+  .dc-moa-wrapper { grid-template-columns: minmax(0, 1fr); }
+  .dc-moa-main {
+    grid-column: 1;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dc-moa-detail-card {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .dc-moa-copy-panel {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .dc-moa-bench { max-height: 360px; }
+  .dc-moa-panel-header { flex-wrap: wrap; }
+  .dc-moa-panel-header .dc-moa-search {
+    width: 100%;
+    max-width: none;
+  }
+  .dc-moa-debate-wrap {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* ── 圆桌响应式画布 ─────────────────────────────────────────────
+   使用固定 720px 设计尺寸，再由 ResizeObserver 连续等比缩放整个画布。
+   高特异性覆盖运行时注入的单类 max-height/min-height 规则。 */
+.dc-moa-main .dc-moa-orchestrator {
+  max-height: none;
+  overflow: hidden;
+}
+.dc-moa-main .dc-moa-roundtable-v {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 720px;
+  min-width: 720px;
+  min-height: 470px;
+  transform-origin: top center;
+  will-change: transform;
+}
+
+/* 设计画布内部尺寸始终固定；窄屏只缩放画布本身，避免各节点按不同
+   media query 单独变小而破坏圆、图标、文字、间距和连线的比例。 */
+.dc-moa-main .dc-moa-core-circle { width: 130px; height: 130px; }
+.dc-moa-main .dc-moa-core-inner { width: 100px; height: 100px; }
+.dc-moa-main .dc-moa-core-inner img,
+.dc-moa-main .dc-moa-core-inner svg,
+.dc-moa-main .dc-moa-core-inner .dc-prov-ico {
+  width: 96px !important;
+  height: 96px !important;
+}
+.dc-moa-main .dc-moa-expert-circle { width: 110px; height: 110px; }
+.dc-moa-main .dc-moa-expert-inner { width: 86px; height: 86px; }
+.dc-moa-main .dc-moa-expert-inner img,
+.dc-moa-main .dc-moa-expert-inner svg,
+.dc-moa-main .dc-moa-expert-inner .dc-prov-ico {
+  width: 80px !important;
+  height: 80px !important;
+}
+.dc-moa-main .dc-moa-experts-row { gap: 1.2rem; }
+
+/* 渠道配置：中等宽度下优先保持模型 / 提供商 / API Key 同行。
+   渠道名称长短不一；解除控件最小宽度后，让三个下拉框先收缩而非换行。 */
+@media (min-width: 721px) and (max-width: 1100px) {
+  .dc-bar-controls { flex-wrap: nowrap; }
+  .dc-bar-controls > select { min-width: 0; }
+}

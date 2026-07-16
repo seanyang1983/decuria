@@ -1,0 +1,48 @@
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── Runtime state (auto-generated; may contain secrets) ──
+# These files are created at runtime with safe defaults if missing.
+# NEVER commit them — they can hold API keys (provider_keys.json) or
+# your local proxy address (proxy.json).
+provider_keys.json
+proxy.json
+visibility.json
+provider_state.json
+orchestrator_state.json
+model_universe.json
+model_universe.stale
+moa_models.json
+
+# ── Runtime data ────────────────────────────────────────
+# MoA chat history + generated media (user content, can be large).
+data/
+generated/
+
+# ── Logs ───────────────────────────────────────────────
+_dashboard_out.log
+*.log
+
+# ── OS / editor ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ── Docs / screenshots ─────────────────────────────────
+# Publish only the reviewed guide and redacted product screenshots. Keep
+# development/debug captures ignored because they may contain user content.
+docs/*
+!docs/INTRO.md
+!docs/screenshots/
+docs/screenshots/*
+!docs/screenshots/channel-config.png
+!docs/screenshots/model-management.png
+!docs/screenshots/provider-management.png
+!docs/screenshots/moa-roundtable.png
+decuria_debug.png
+decuria_moa_debug.png

@@ -1,0 +1,19 @@
+# Normalize line endings to LF on commit (cross-platform).
+* text=auto eol=lf
+
+# Explicitly treat source as text.
+*.py      text
+*.js      text
+*.json    text
+*.yaml    text
+*.yml     text
+*.md      text
+*.html    text
+*.css     text
+
+# SVG provider icons are text.
+*.svg     text
+
+# Binaries.
+*.png     binary
+*.mp4     binary

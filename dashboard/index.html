@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decuria - 智囊团</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Import map for standalone mode (resolves bare "preact" specifiers in hooks) -->
+  <script type="importmap">
+  {
+    "imports": {
+      "preact": "./assets/preact.module.js",
+      "preact/hooks": "./assets/hooks.module.js"
+    }
+  }
+  </script>
+  <!-- Bridge: load Preact ESM + Hooks → wrap into mutable window.preact object -->
+  <script type="module">
+    import * as Preact from 'preact';
+    import * as hooks from 'preact/hooks';
+    // Create a mutable plain-object mirror so non-module code (dist/index.js) can read/write
+    window.preact = {
+      h: Preact.h,
+      createElement: Preact.createElement,
+      render: Preact.render,
+      Component: Preact.Component,
+      Fragment: Preact.Fragment,
+      cloneElement: Preact.cloneElement,
+      createContext: Preact.createContext,
+      createRef: Preact.createRef,
+      isValidElement: Preact.isValidElement,
+      options: Preact.options || {},
+      toChildArray: Preact.toChildArray,
+      hydrate: Preact.hydrate,
+      hooks: hooks
+    };
+    window.__hermes_standalone_ready = true;
+  </script>
+</head>
+<body class="dc-standalone-body">
+  <div id="decuria-root"></div>
+  <script src="dist/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "decuria",
+  "label": "三个臭皮匠",
+  "description": "多模型智囊团（Mixture of Agents）：在一个 Dashboard 内完成模型路由、Provider 管理、模型可见性控制与多模型圆桌协作。",
+  "icon": "Users",
+  "version": "0.2.0",
+  "tab": {
+    "path": "/decuria",
+    "position": "after:models",
+    "hidden": false
+  },
+  "api": "plugin_api.py",
+  "entry": "dist/index.js",
+  "css": "style.css",
+  "slots": []
+}
