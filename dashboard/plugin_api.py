@@ -142,7 +142,6 @@ def _config_keyed_slugs() -> set:
 
 PLATFORM_LABELS = {
     "feishu": "飞书",
-    "feishu2": "飞书二",
     "weixin": "微信",
     "webhook": "Webhook",
     "api_server": "API Server",

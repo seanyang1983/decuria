@@ -218,7 +218,7 @@ async def _moa_and_reply(gateway, source, preset_id, prompt):
             if _platform_val and _platform_val != "local":
                 # 友好中文名映射
                 _NAME_MAP = {
-                    "weixin": "微信", "feishu": "飞书", "feishu2": "飞书2",
+                    "weixin": "微信", "feishu": "飞书",
                     "telegram": "Telegram", "discord": "Discord",
                     "wecom": "企业微信", "dingtalk": "钉钉",
                     "qqbot": "QQ机器人", "slack": "Slack",
