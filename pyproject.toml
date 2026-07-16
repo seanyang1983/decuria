@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "decuria"
+version = "0.2.0"
+description = "Decuria (三个臭皮匠) — a Mixture-of-Agents dashboard plugin for Hermes Agent: model routing, provider management, model visibility, and a multi-model round table."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Decuria Team" }]
+keywords = ["hermes-agent", "plugin", "mixture-of-agents", "moa", "llm", "dashboard"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Application Frameworks",
+]
+# The plugin runs inside a Hermes Agent host, which provides FastAPI, Pydantic
+# and PyYAML. The register()/hook/tool path itself uses only the standard
+# library, so no third-party runtime dependencies are declared here.
+dependencies = []
+
+[project.urls]
+Homepage = "https://decuria.omnilimb.com"
+Repository = "https://github.com/seanyang1983/decuria"
+Issues = "https://github.com/seanyang1983/decuria/issues"
+
+# Hermes discovers pip-installed plugins through this entry-point group and
+# calls `register(ctx)` on the loaded object, so the value must resolve to the
+# `decuria` package module (which exposes register), not `decuria:register`.
+[project.entry-points."hermes_agent.plugins"]
+decuria = "decuria"
+
+[tool.setuptools]
+# Flat layout: the repository root IS the `decuria` package so the same tree
+# also works as a directory plugin cloned into ~/.hermes/plugins/decuria.
+packages = ["decuria"]
+license-files = ["LICENSE"]
+
+[tool.setuptools.package-dir]
+decuria = "."
+
+[tool.setuptools.package-data]
+decuria = [
+    "plugin.yaml",
+    "*.example.json",
+    "THIRD_PARTY_NOTICES.md",
+    "SECURITY.md",
+    "dashboard/*.py",
+    "dashboard/*.json",
+    "dashboard/*.css",
+    "dashboard/*.html",
+    "dashboard/dist/*",
+    "dashboard/assets/*",
+    "dashboard/assets/provider-icons/*",
+]

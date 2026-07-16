@@ -46,3 +46,9 @@ docs/screenshots/*
 !docs/screenshots/moa-roundtable.png
 decuria_debug.png
 decuria_moa_debug.png
+
+# ── Python build artifacts (pip packaging) ──────────────
+build/
+dist/
+*.egg-info/
+.eggs/

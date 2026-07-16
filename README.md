@@ -1,5 +1,17 @@
 # Decuria · 三个臭皮匠
 
+<p align="center">
+  <a href="https://github.com/seanyang1983/decuria/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/seanyang1983/decuria/ci.yml?branch=main&style=for-the-badge&label=CI" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-green?style=for-the-badge" alt="License: AGPL-3.0"></a>
+  <img src="https://img.shields.io/badge/Hermes-Agent%20Plugin-7c6cf0?style=for-the-badge" alt="Hermes Agent Plugin">
+  <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.9+">
+  <a href="https://decuria.omnilimb.com"><img src="https://img.shields.io/badge/Website-decuria.omnilimb.com-f2b544?style=for-the-badge" alt="Website"></a>
+</p>
+
+<p align="center">
+  <b>简体中文</b> · <a href="README.en.md">English</a>
+</p>
+
 > 三个臭皮匠，顶个诸葛亮。
 > 让多个 AI 互相补位、彼此质疑——把「问一个模型」升级成「开一场专家圆桌」。
 
@@ -76,16 +88,25 @@ Decuria 把这些痛点收拢成四个页面：**一次配置、清晰可见、�
 
 > 仓库地址：`https://github.com/seanyang1983/decuria`
 
-克隆到 Hermes 的插件目录：
+### 作为 pip 包
+
+```bash
+pip install decuria
+hermes plugins enable decuria
+```
+
+### 或作为目录插件
 
 ```bash
 # macOS / Linux
 git clone https://github.com/seanyang1983/decuria.git ~/.hermes/plugins/decuria
+hermes plugins enable decuria
 ```
 
 ```powershell
 # Windows PowerShell
 git clone https://github.com/seanyang1983/decuria.git "$HOME\.hermes\plugins\decuria"
+hermes plugins enable decuria
 ```
 
 在 active profile 的 `config.yaml` 中启用：

@@ -87,7 +87,7 @@ _PLUGIN_ROOT = _Path(__file__).resolve().parent.parent
 if str(_PLUGIN_ROOT) not in _sys.path:
     _sys.path.insert(0, str(_PLUGIN_ROOT))
 from security_utils import UnsafeURLError, secret_preview, validate_provider_base_url  # noqa: E402
-from state_paths import hermes_home, state_file  # noqa: E402
+from state_paths import chats_dir, hermes_home, state_file  # noqa: E402
 
 try:
     from moa_core import run_moa, list_chats, get_chat, get_preset  # type: ignore
@@ -1855,14 +1855,19 @@ def get_moa_usage():
             grand_sessions += int(cnt or 0)
 
         # ── MoA-only stats ──
-        # MoA chat data lives in plugin's own data/moa_chats/*.json files, NOT in
-        # state.db sessions table.  Scan those files to build per-model usage.
+        # MoA chat data lives under the active profile's data/decuria/moa_chats/*.json
+        # (see moa_core / state_paths.chats_dir()), NOT in the state.db sessions
+        # table. Scan those files to build per-model usage.
         import json as _json
         moa_models: Dict[str, dict] = {}
         # ── 按渠道来源分组的统计（新增：用于智囊团用量总览的渠道维度）──
         by_source: Dict[str, dict] = {}
         moa_grand_in = moa_grand_out = moa_grand_sessions = 0
-        _moa_data_dir = PLUGIN_DIR / "data" / "moa_chats"
+        # MoA chats are persisted by moa_core under the active profile's
+        # <HERMES_HOME>/data/decuria/moa_chats (state_paths.chats_dir()), NOT under
+        # the plugin source tree. Reading PLUGIN_DIR/data/moa_chats made usage
+        # always read 0. Use the same profile-safe directory the writer uses.
+        _moa_data_dir = chats_dir()
         try:
             if _moa_data_dir.is_dir():
                 for _f in _moa_data_dir.glob("*.json"):
