@@ -142,4 +142,9 @@ node --check dashboard/dist/index.js
 
 ## License
 
-[MIT License](LICENSE) · 第三方资产说明见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。品牌名称与商标归各自权利人所有。
+Decuria 采用 [GNU AGPL-3.0](LICENSE) 许可发布。Copyright © 2026 Decuria Team。
+
+- **个人、学习、研究，以及愿意同样开源的项目**：可自由使用、修改、分发。但只要你修改了 Decuria 并**通过网络对外提供服务**（包括私有部署给他人使用），就必须向这些使用者公开你修改版的**完整源码**（AGPL 第 13 条）。
+- **闭源或商业集成**：若你不愿公开自己的源码（例如把 Decuria 集成进闭源产品或商业服务），请联系作者获取**商业授权**（双授权）。
+
+第三方资产（内置的 Preact、Provider 图标等）保留其各自原始许可证，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。品牌名称与商标归各自权利人所有。
